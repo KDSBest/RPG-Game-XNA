@@ -8,13 +8,15 @@ namespace RPG_Game_XNA.GameStateManagement
 {
     public class GameStateManager
     {
-        private List<GameStateScreen> _screens;
+        private List<GameStateScreen> Screens;
+        private List<GameStateScreen> UpdateScreens;
         private InputState _input;
         public bool Exit;
 
         private GameStateManager()
         {
-            _screens = new List<GameStateScreen>();
+            Screens = new List<GameStateScreen>();
+            UpdateScreens = new List<GameStateScreen>();
             _input = new InputState();
             Exit = false;
         }
@@ -22,14 +24,20 @@ namespace RPG_Game_XNA.GameStateManagement
         public void Update(GameTime time)
         {
             _input.Update();
+
+            UpdateScreens.Clear();
+
+            foreach (GameStateScreen screen in Screens)
+                UpdateScreens.Add(screen);
+            
             bool inputSended = false;
-            for (int i = _screens.Count - 1; i >= 0; i--)
+            for (int i = UpdateScreens.Count - 1; i >= 0; i--)
             {
-                if (_screens[i].Active)
+                if (UpdateScreens[i].Active)
                 {
-                    if (!inputSended && _screens[i].HandleInputs(_input))
+                    if (!inputSended && UpdateScreens[i].HandleInputs(_input))
                         inputSended = true;
-                    if (_screens[i].Update(time))
+                    if (UpdateScreens[i].Update(time))
                         return;
                 }
             }
@@ -37,7 +45,7 @@ namespace RPG_Game_XNA.GameStateManagement
 
         public void Draw(GameTime time)
         {
-            foreach (GameStateScreen screen in _screens)
+            foreach (GameStateScreen screen in Screens)
             {
                 if (screen.Active)
                 {
@@ -49,17 +57,17 @@ namespace RPG_Game_XNA.GameStateManagement
         public void AddScreen(GameStateScreen gameScreen, bool ActivateScreen, bool DeactivateOthers)
         {
             if (DeactivateOthers)
-                foreach (GameStateScreen screen in _screens)
+                foreach (GameStateScreen screen in Screens)
                     screen.Active = false;
             gameScreen.Active = ActivateScreen;
-            _screens.Add(gameScreen);
+            Screens.Add(gameScreen);
         }
 
         public void ActivateScreen(GameStateScreen gameScreen, bool DeactivateOthers)
         {
             if (DeactivateOthers)
             {
-                foreach (GameStateScreen screen in _screens)
+                foreach (GameStateScreen screen in Screens)
                 {
                     if (screen != gameScreen)
                         screen.Active = false;
@@ -69,12 +77,17 @@ namespace RPG_Game_XNA.GameStateManagement
             }
             else
             {
-                foreach (GameStateScreen screen in _screens)
+                foreach (GameStateScreen screen in Screens)
                 {
                     if (screen == gameScreen)
                         screen.Active = true;
                 }
             }
+        }
+
+        public void RemoveScreen(GameStateScreen gameScreen)
+        {
+            Screens.Remove(gameScreen);
         }
 
         #region Singleton pattern

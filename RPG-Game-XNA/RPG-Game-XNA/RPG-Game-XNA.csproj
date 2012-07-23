@@ -109,11 +109,13 @@
   <ItemGroup>
     <Compile Include="AbstractGameScreen\MenuScreen.cs" />
     <Compile Include="GameScreen\MainMenuScreen.cs" />
+    <Compile Include="GameScreen\PopUpScreen.cs" />
     <Compile Include="GameStateManagement\GameStateScreen.cs" />
     <Compile Include="GameStateManagement\GameStateManager.cs" />
     <Compile Include="GameStateManagement\InputState.cs" />
     <Compile Include="Globals.cs" />
     <Compile Include="Interfaces\IMenuEntry.cs" />
+    <Compile Include="MenuEntries\MenuEntryTestPopUp.cs" />
     <Compile Include="MenuEntries\MenuEntryQuit.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />

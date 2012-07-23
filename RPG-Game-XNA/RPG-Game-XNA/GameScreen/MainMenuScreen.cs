@@ -11,8 +11,7 @@ namespace RPG_Game_XNA.GameScreen
     {
         public MainMenuScreen() : base()
         {
-            Entries.Add(new MenuEntryQuit());
-            Entries.Add(new MenuEntryQuit());
+            Entries.Add(new MenuEntryTestPopUp());
             Entries.Add(new MenuEntryQuit());
         }
     }

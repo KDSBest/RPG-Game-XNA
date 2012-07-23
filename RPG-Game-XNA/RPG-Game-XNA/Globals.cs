@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework;
 
 namespace RPG_Game_XNA
 {
@@ -17,6 +18,7 @@ namespace RPG_Game_XNA
         public float ScreenWidth;
         public float ScreenHeightHalf;
         public float ScreenWidthHalf;
+        public Texture2D PixelWhite;
 
         public Globals()
         {
@@ -28,10 +30,15 @@ namespace RPG_Game_XNA
             this.Graphics = Graphics;
             this.SpriteBatch = new SpriteBatch(Graphics);
             this.SpriteFont = Content.Load<SpriteFont>("DefaultFont");
+            
             ScreenHeight = Graphics.Viewport.Height;
             ScreenWidth = Graphics.Viewport.Width;
             ScreenHeightHalf = ScreenHeight / 2;
             ScreenWidthHalf = ScreenWidth / 2;
+
+            PixelWhite = new Texture2D(Graphics, 1, 1);
+            Color[] data = { Color.White };
+            PixelWhite.SetData<Color>(data);
         }
 
         #region Singleton pattern
