@@ -8,6 +8,8 @@ using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+using RPG_Game_XNA.GameStateManagement;
+using RPG_Game_XNA.GameScreen;
 
 namespace RPG_Game_XNA
 {
@@ -17,7 +19,6 @@ namespace RPG_Game_XNA
     public class Game1 : Microsoft.Xna.Framework.Game
     {
         GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
 
         public Game1()
         {
@@ -49,8 +50,8 @@ namespace RPG_Game_XNA
         protected override void LoadContent()
         {
             // Create a new SpriteBatch, which can be used to draw textures.
-            spriteBatch = new SpriteBatch(GraphicsDevice);
-
+            Globals.Instance.Initialize(Content, GraphicsDevice);
+            GameStateManager.Instance.AddScreen(new MainMenuScreen(), true, true);
             // TODO: use this.Content to load your game content here
         }
 
@@ -71,7 +72,8 @@ namespace RPG_Game_XNA
         protected override void Update(GameTime gameTime)
         {
             // Allows the game to exit
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
+            GameStateManager.Instance.Update(gameTime);
+            if (GameStateManager.Instance.Exit)
                 this.Exit();
 
             // TODO: Add your update logic here
@@ -85,9 +87,8 @@ namespace RPG_Game_XNA
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
-
-            // TODO: Add your drawing code here
+            GraphicsDevice.Clear(Color.Black);
+            GameStateManager.Instance.Draw(gameTime);
 
             base.Draw(gameTime);
         }
