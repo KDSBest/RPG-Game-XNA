@@ -23,9 +23,13 @@ namespace RPG_Game_XNA.GameStateManagement
             bool inputSended = false;
             for (int i = _screens.Count - 1; i >= 0; i--)
             {
-                _screens[i].Update(time);
-                if (!inputSended && _screens[i].HandleInputs(_input))
-                    inputSended = true;
+                if (_screens[i].Active)
+                {
+                    if (!inputSended && _screens[i].HandleInputs(_input))
+                        inputSended = true;
+                    if (_screens[i].Update(time))
+                        return;
+                }
             }
         }
 
@@ -33,7 +37,41 @@ namespace RPG_Game_XNA.GameStateManagement
         {
             foreach (GameScreen screen in _screens)
             {
-                screen.Draw(time);
+                if (screen.Active)
+                {
+                    screen.Draw(time);
+                }
+            }
+        }
+
+        public void AddScreen(GameScreen gameScreen, bool ActivateScreen, bool DeactivateOthers)
+        {
+            if (DeactivateOthers)
+                foreach (GameScreen screen in _screens)
+                    screen.Active = false;
+            gameScreen.Active = ActivateScreen;
+            _screens.Add(gameScreen);
+        }
+
+        public void ActivateScreen(GameScreen gameScreen, bool DeactivateOthers)
+        {
+            if (DeactivateOthers)
+            {
+                foreach (GameScreen screen in _screens)
+                {
+                    if (screen != gameScreen)
+                        screen.Active = false;
+                    else
+                        screen.Active = true;
+                }
+            }
+            else
+            {
+                foreach (GameScreen screen in _screens)
+                {
+                    if (screen == gameScreen)
+                        screen.Active = true;
+                }
             }
         }
 

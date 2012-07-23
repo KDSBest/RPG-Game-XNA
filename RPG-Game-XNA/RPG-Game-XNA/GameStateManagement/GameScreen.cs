@@ -8,15 +8,23 @@ namespace RPG_Game_XNA.GameStateManagement
 {
     public abstract class GameScreen
     {
+        public bool Active;
 
-        public void Update(GameTime time)
+        public GameScreen()
         {
+            Active = false;
+        }
 
+        /// <summary>
+        /// returns true to prevent bottom screens from updating
+        /// </summary>
+        public bool Update(GameTime time)
+        {
+            return false;
         }
 
         public void Draw(GameTime time)
         {
-
         }
 
         public bool HandleInputs(InputState input)
