@@ -1,0 +1,24 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual C# Express 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RPG-Game-XNA", "RPG-Game-XNA\RPG-Game-XNA\RPG-Game-XNA.csproj", "{5069C5C9-207D-4894-9F2A-396DFE506C87}"
+EndProject
+Project("{96E2B04D-8817-42C6-938A-82C39BA4D311}") = "RPG-Game-XNAContent", "RPG-Game-XNA\RPG-Game-XNAContent\RPG-Game-XNAContent.contentproj", "{C6367B65-257C-44D3-93B6-973B30687172}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5069C5C9-207D-4894-9F2A-396DFE506C87}.Debug|x86.ActiveCfg = Debug|x86
+		{5069C5C9-207D-4894-9F2A-396DFE506C87}.Debug|x86.Build.0 = Debug|x86
+		{5069C5C9-207D-4894-9F2A-396DFE506C87}.Release|x86.ActiveCfg = Release|x86
+		{5069C5C9-207D-4894-9F2A-396DFE506C87}.Release|x86.Build.0 = Release|x86
+		{C6367B65-257C-44D3-93B6-973B30687172}.Debug|x86.ActiveCfg = Debug|x86
+		{C6367B65-257C-44D3-93B6-973B30687172}.Release|x86.ActiveCfg = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
