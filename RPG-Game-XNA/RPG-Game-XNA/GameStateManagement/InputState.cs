@@ -36,6 +36,11 @@ namespace RPG_Game_XNA.GameStateManagement
                     LastKeyboardStates.IsKeyUp(key));
         }
 
+        public bool IsKeyDown(Keys key)
+        {
+            return (CurrentKeyboardStates.IsKeyDown(key));
+        }
+
         public bool IsMenuSelect()
         {
             return IsNewKeyPress(Keys.Space) || IsNewKeyPress(Keys.Enter);
@@ -64,6 +69,23 @@ namespace RPG_Game_XNA.GameStateManagement
         public bool IsPauseGame()
         {
             return IsNewKeyPress(Keys.Escape);
+        }
+
+        public bool IsUp()
+        {
+            return IsKeyDown(Keys.Up);
+        }
+        public bool IsDown()
+        {
+            return IsKeyDown(Keys.Down);
+        }
+        public bool IsLeft()
+        {
+            return IsKeyDown(Keys.Left);
+        }
+        public bool IsRight()
+        {
+            return IsKeyDown(Keys.Right);
         }
     }
 }
