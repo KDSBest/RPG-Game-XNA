@@ -31,7 +31,7 @@ namespace RPG_Game_XNA.GameScreen
             Globals.Instance.SpriteBatch.Begin();
             if (PlayerDummy != null)
             {
-                Globals.Instance.SpriteBatch.Draw(PlayerDummy, position, null, Color.White, 0f, new Vector2(0, 96), 1f, SpriteEffects.None, MathHelper.Clamp(1f - position.Y / (float)TileEngine.Viewport.Height, 0f, 1f));
+                Globals.Instance.SpriteBatch.Draw(PlayerDummy, position, null, Color.White, 0f, new Vector2(0, 64), 1f, SpriteEffects.None, MathHelper.Clamp(1f - position.Y / (float)TileEngine.Viewport.Height, 0f, 1f));
             }
             Globals.Instance.SpriteBatch.End();
             TileEngine.DrawLayers(false, false, true);
@@ -41,6 +41,10 @@ namespace RPG_Game_XNA.GameScreen
         {
             userMovement = TileEngine.UpdateUserMovement(input.IsUp(), input.IsDown(), input.IsLeft(), input.IsRight());
 
+            if (input.IsMenuSelect())
+            {
+                TileEngine.TriggerEvent();
+            }
             return true;
         }
 

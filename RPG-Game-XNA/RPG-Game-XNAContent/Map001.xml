@@ -109,5 +109,18 @@
     <MapDimensions>20 23</MapDimensions>
     <TileSize>64 64</TileSize>
     <SpawnMapPosition>9 7</SpawnMapPosition>
+    <Trigger>
+      <Item>
+        <MapPosition>8 22</MapPosition>
+        <Size>3 0</Size>
+        <Action>TEST</Action>
+      </Item>
+      <Item>
+        <MapPosition>10 16</MapPosition>
+        <Size>3 3</Size>
+        <Action>Learn to Read;MultiLine
+Test</Action>
+      </Item>
+    </Trigger>
   </Asset>
 </XnaContent>

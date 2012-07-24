@@ -5,9 +5,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RPG-Game-XNA", "RPG-Game-XN
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RPG-Game-XNAContent", "RPG-Game-XNA\RPG-Game-XNAContent\RPG-Game-XNAContent.contentproj", "{C6367B65-257C-44D3-93B6-973B30687172}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RPG-Content-PipeLine", "RPG-Content-PipeLine\RPG-Content-PipeLine.csproj", "{37128FBD-A8F9-479F-9B85-6D31B56AA1D7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RPGContentPipeLine", "RPG-Content-PipeLine\RPGContentPipeLine.csproj", "{37128FBD-A8F9-479F-9B85-6D31B56AA1D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RPG-Data", "RPG-Data\RPG-Data.csproj", "{BF1FD91B-AFD5-4A8B-8592-4BDB4DBBD53D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RPGData", "RPG-Data\RPGData.csproj", "{BF1FD91B-AFD5-4A8B-8592-4BDB4DBBD53D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

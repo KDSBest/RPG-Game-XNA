@@ -305,6 +305,8 @@ namespace RPGData
             }
         }
 
+        public List<Trigger> Trigger = new List<Trigger>();
+
         #region Content Type Reader
 
 
@@ -337,7 +339,7 @@ namespace RPGData
                 map.ObjectLayer = input.ReadObject<int[]>();
                 map.CollisionLayer = input.ReadObject<int[]>();
                 map.Portals.AddRange(input.ReadObject<List<Point>>());
-
+                map.Trigger.AddRange(input.ReadObject<List<Trigger>>());
                 return map;
             }
         }

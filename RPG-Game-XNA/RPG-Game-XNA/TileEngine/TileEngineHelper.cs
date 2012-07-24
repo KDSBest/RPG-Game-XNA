@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using RPGData;
+using RPG_Game_XNA.GameScreen;
 namespace RPG_Game_XNA.TileEngine
 {
     /// <summary>
@@ -433,6 +434,18 @@ namespace RPG_Game_XNA.TileEngine
                 (screenRectangle.Y > viewport.Y - screenRectangle.Height) &&
                 (screenRectangle.X < viewport.X + viewport.Width) &&
                 (screenRectangle.Y < viewport.Y + viewport.Height));
+        }
+
+        public void TriggerEvent()
+        {
+            foreach(Trigger trigger in Map.Trigger)
+            {
+                if (trigger.MapPosition.X <= PartyLeaderPosition.TilePosition.X && trigger.MapPosition.Y <= PartyLeaderPosition.TilePosition.Y &&
+                    trigger.MapMaxPosition.X >= PartyLeaderPosition.TilePosition.X && trigger.MapMaxPosition.Y >= PartyLeaderPosition.TilePosition.Y)
+                {
+                    GameStateManagement.GameStateManager.Instance.AddScreen(new PopUpScreen(trigger.Action.Split(';')), true, false);
+                }
+            }
         }
     }
 }

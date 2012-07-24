@@ -19,7 +19,7 @@ using Microsoft.Xna.Framework.Content.Pipeline.Serialization.Compiler;
 using RPGData;
 #endregion
 
-namespace RolePlayingGameProcessors
+namespace RPGContentPipeline
 {
     /// <summary>
     /// This class will be instantiated by the XNA Framework Content Pipeline
@@ -72,6 +72,7 @@ namespace RolePlayingGameProcessors
             output.WriteObject(value.ObjectLayer);
             output.WriteObject(value.CollisionLayer);
             output.WriteObject(value.Portals);
+            output.WriteObject(value.Trigger);
         }
     }
 }
