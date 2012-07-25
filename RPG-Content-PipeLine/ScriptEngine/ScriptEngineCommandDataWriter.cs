@@ -28,13 +28,14 @@ namespace RPGContentPipeline
     /// This should be part of a Content Pipeline Extension Library project.
     
     [ContentTypeWriter]
-    public class TriggerWriter : RolePlayingGameWriter<Trigger>
+    public class ScriptEngineCommandDataWriter : RolePlayingGameWriter<ScriptEngineCommand>
     {
-        protected override void Write(ContentWriter output, Trigger value)
+        protected override void Write(ContentWriter output, ScriptEngineCommand value)
         {
-            output.WriteObject(value.MapPosition);
-            output.WriteObject(value.Size);
-            output.WriteObject(value.Action);
+            output.Write(value.Type);
+            output.WriteObject(value.Parameter);
+            output.WriteObject(value.Body);
+            output.WriteObject(value.Body2);
         }
     }
 }

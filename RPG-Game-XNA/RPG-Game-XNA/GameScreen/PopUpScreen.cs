@@ -26,6 +26,11 @@ namespace RPG_Game_XNA.GameScreen
             StringPos = new Vector2(15, 15);
         }
 
+        public override bool Update(GameTime time)
+        {
+            return true;
+        }
+
         public override void Draw(GameTime time)
         {
             base.Draw(time);

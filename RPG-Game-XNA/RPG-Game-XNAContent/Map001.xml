@@ -105,6 +105,7 @@
       8 20 9 20
     </Portals>
     <TextureName>ForestTiles</TextureName>
+    <RandomFightPossibility>100</RandomFightPossibility>
     <Name>Map001</Name>
     <MapDimensions>20 23</MapDimensions>
     <TileSize>64 64</TileSize>
@@ -113,13 +114,38 @@
       <Item>
         <MapPosition>8 22</MapPosition>
         <Size>3 0</Size>
-        <Action>TEST</Action>
+        <Action>
+          <Item>
+            <Parameter>
+              <Item>
+                <Type>String</Type>
+                <Value>Test123</Value>
+              </Item>
+            </Parameter>
+            <Body/>
+            <Body2/>
+            <Type>ShowText</Type>
+          </Item>
+        </Action>
       </Item>
       <Item>
         <MapPosition>10 16</MapPosition>
         <Size>3 3</Size>
-        <Action>Learn to Read;MultiLine
-Test</Action>
+        <Action>
+          <Item>
+            <Parameter>
+              <Item>
+                <Type>String</Type>
+                <Value>Test123\nMultiline</Value>
+              </Item>
+              <Item>
+                <Type>String</Type>
+                <Value>Test321\nMultiline\nSecondText</Value>
+              </Item>
+            </Parameter>
+            <Type>ShowText</Type>
+          </Item>
+        </Action>
       </Item>
     </Trigger>
   </Asset>

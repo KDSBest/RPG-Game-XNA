@@ -26,7 +26,7 @@ namespace RPGContentPipeline
     /// to write the specified data type into binary .xnb format.
     ///
     /// This should be part of a Content Pipeline Extension Library project.
-    /// </summary>
+    
     [ContentTypeWriter]
     public class MapWriter : RolePlayingGameWriter<Map>
     {
@@ -73,6 +73,7 @@ namespace RPGContentPipeline
             output.WriteObject(value.CollisionLayer);
             output.WriteObject(value.Portals);
             output.WriteObject(value.Trigger);
+            output.Write(value.RandomFightPossibility);
         }
     }
 }

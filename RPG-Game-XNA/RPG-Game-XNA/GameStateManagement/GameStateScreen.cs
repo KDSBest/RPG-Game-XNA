@@ -15,9 +15,9 @@ namespace RPG_Game_XNA.GameStateManagement
             Active = false;
         }
 
-        /// <summary>
+
         /// returns true to prevent bottom screens from updating
-        /// </summary>
+        
         public virtual bool Update(GameTime time)
         {
             return false;

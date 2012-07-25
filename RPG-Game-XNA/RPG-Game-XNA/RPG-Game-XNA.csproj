@@ -119,9 +119,11 @@
     <Compile Include="MenuEntries\MenuEntryTestPopUp.cs" />
     <Compile Include="MenuEntries\MenuEntryQuit.cs" />
     <Compile Include="MenuEntries\MenuEntryTestTileEngine.cs" />
+    <Compile Include="Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Game1.cs" />
+    <Compile Include="ScriptEngine\ScriptEngine.cs" />
     <Compile Include="TileEngine\PlayerPosition.cs" />
     <Compile Include="TileEngine\TileEngineHelper.cs" />
   </ItemGroup>

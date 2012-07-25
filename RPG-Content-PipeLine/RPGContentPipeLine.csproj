@@ -52,6 +52,8 @@
     <Compile Include="MapWriter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RolePlayingGameWriter.cs" />
+    <Compile Include="ScriptEngine\ScriptEngineCommandDataWriter.cs" />
+    <Compile Include="ScriptEngine\ScriptEngineParamsWriter.cs" />
     <Compile Include="TriggerWriter.cs" />
   </ItemGroup>
   <ItemGroup>

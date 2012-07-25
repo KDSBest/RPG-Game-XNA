@@ -18,7 +18,7 @@ namespace RPG_Game_XNA.TileEngine
     
     /// <summary>
     /// The position of a player in the tile engine.
-    /// </summary>
+    
     /// <remarks>Players are the only objects that move between tiles.</remarks>
     public class PlayerPosition
     {
@@ -27,19 +27,19 @@ namespace RPG_Game_XNA.TileEngine
 
         /// <summary>
         /// Position in map coordinates (tiles).
-        /// </summary>
+        
         public Point TilePosition = Point.Zero;
 
 
         /// <summary>
         /// The offset into the tile, in pixels.
-        /// </summary>
+        
         public Vector2 TileOffset = Vector2.Zero;
 
 
         /// <summary>
         /// The position in screen coordinates.
-        /// </summary>
+        
         public Vector2 GetScreenPosition(TileEngineHelper TileEngine)
         {
             return TileEngine.GetScreenPosition(TilePosition) + TileOffset;
@@ -54,7 +54,7 @@ namespace RPG_Game_XNA.TileEngine
 
         /// <summary>
         /// The direction that the player is facing.
-        /// </summary>
+        
         public Direction Direction = Direction.South;
 
 
@@ -66,13 +66,13 @@ namespace RPG_Game_XNA.TileEngine
 
         /// <summary>
         /// If true, the position moved on the last update.
-        /// </summary>
+        
         /// <remarks>Used to control animation.</remarks>
         private bool isMoving = false;
 
         /// <summary>
         /// If true, the position moved on the last update.
-        /// </summary>
+        
         /// <remarks>Used to control animation.</remarks>
         public bool IsMoving
         {
@@ -82,7 +82,7 @@ namespace RPG_Game_XNA.TileEngine
 
         /// <summary>
         /// Move the player by the given amount.
-        /// </summary>
+        
         public void Move(TileEngineHelper TileEngine, Vector2 movement)
         {
             isMoving = (movement != Vector2.Zero);
@@ -105,7 +105,7 @@ namespace RPG_Game_XNA.TileEngine
 
         /// <summary>
         /// Calculates the effect of movement on the position.
-        /// </summary>
+        
         /// <param name="movement">
         /// The movement to be used to calculate the new tile position.
         /// </param>
@@ -142,7 +142,7 @@ namespace RPG_Game_XNA.TileEngine
 
         /// <summary>
         /// Determine the direction based on the given movement vector.
-        /// </summary>
+        
         /// <param name="vector">The vector that the player is moving.</param>
         /// <returns>The calculated direction.</returns>
         public static Direction CalculateDirection(Vector2 vector)

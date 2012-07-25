@@ -8,7 +8,7 @@ namespace RPG_Game_XNA.TileEngine
 {
     /// <summary>
     /// Static class for a tileable map
-    /// </summary>
+    
     public class TileEngineHelper
     {
         public TileEngineHelper()
@@ -17,28 +17,28 @@ namespace RPG_Game_XNA.TileEngine
         }
 
 
-        /// <summary>
+
         /// The map being used by the tile engine.
-        /// </summary>
+        
         private Map map = null;
 
-        /// <summary>
+
         /// The map being used by the tile engine.
-        /// </summary>
+        
         public Map Map
         {
             get { return map; }
         }
 
-        /// <summary>
+
         /// The position of the outside 0,0 corner of the map, in pixels.
-        /// </summary>
+        
         public Vector2 MapOriginPosition;
 
 
-        /// <summary>
+
         /// Calculate the screen position of a given map location (in tiles).
-        /// </summary>
+        
         /// <param name="mapPosition">A map location, in tiles.</param>
         /// <returns>The current screen position of that location.</returns>
         public Vector2 GetScreenPosition(Point mapPosition)
@@ -49,9 +49,9 @@ namespace RPG_Game_XNA.TileEngine
         }
 
 
-        /// <summary>
+
         /// Set the map in use by the tile engine.
-        /// </summary>
+        
         /// <param name="map">The new map for the tile engine.</param>
         /// <param name="portal">The portal the party is entering on, if any.</param>
         public void SetMap(Map newMap, int portalEntry)
@@ -85,14 +85,14 @@ namespace RPG_Game_XNA.TileEngine
             }
         }
 
-        /// <summary>
+
         /// The viewport that the tile engine is rendering within.
-        /// </summary>
+        
         private Viewport viewport;
 
-        /// <summary>
+
         /// The viewport that the tile engine is rendering within.
-        /// </summary>
+        
         public Viewport Viewport
         {
             get { return viewport; }
@@ -106,9 +106,9 @@ namespace RPG_Game_XNA.TileEngine
         }
 
 
-        /// <summary>
+
         /// The center of the current viewport.
-        /// </summary>
+        
         private Vector2 viewportCenter;
         public Vector2 ViewportCenter
         {
@@ -118,18 +118,18 @@ namespace RPG_Game_XNA.TileEngine
                 viewportCenter = value;
             }
         }
-        /// <summary>
+
         /// The speed of the party leader, in units per second.
-        /// </summary>
+        
         /// <remarks>
         /// The movementCollisionTolerance constant should be a multiple of this number.
         /// </remarks>
         private const float partyLeaderMovementSpeed = 3f;
 
 
-        /// <summary>
+
         /// The current position of the party leader.
-        /// </summary>
+        
         private PlayerPosition partyLeaderPosition = new PlayerPosition();
         public PlayerPosition PartyLeaderPosition
         {
@@ -137,9 +137,9 @@ namespace RPG_Game_XNA.TileEngine
             set { partyLeaderPosition = value; }
         }
 
-        /// <summary>
+
         /// Update the user-controlled movement of the party.
-        /// </summary>
+        
         /// <returns>The controlled movement for this update.</returns>
         public Vector2 UpdateUserMovement(bool up, bool down, bool left, bool right)
         {
@@ -184,19 +184,19 @@ namespace RPG_Game_XNA.TileEngine
             return desiredMovement;
         }
 
-        /// <summary>
+
         /// The number of pixels that characters should be allowed to move into 
         /// blocking tiles.
-        /// </summary>
+        
         /// <remarks>
         /// The partyMovementSpeed constant should cleanly divide this number.
         /// </remarks>
         const int movementCollisionTolerance = 12;
 
 
-        /// <summary>
+
         /// Returns true if the player can move up from their current position.
-        /// </summary>
+        
         private bool CanPartyLeaderMoveUp()
         {
             // if they're not within the tolerance of the next tile, then this is moot
@@ -233,9 +233,9 @@ namespace RPG_Game_XNA.TileEngine
         }
 
 
-        /// <summary>
+
         /// Returns true if the player can move down from their current position.
-        /// </summary>
+        
         private bool CanPartyLeaderMoveDown()
         {
             // if they're not within the tolerance of the next tile, then this is moot
@@ -272,9 +272,9 @@ namespace RPG_Game_XNA.TileEngine
         }
 
 
-        /// <summary>
+
         /// Returns true if the player can move left from their current position.
-        /// </summary>
+        
         private bool CanPartyLeaderMoveLeft()
         {
             // if they're not within the tolerance of the next tile, then this is moot
@@ -311,9 +311,9 @@ namespace RPG_Game_XNA.TileEngine
         }
 
 
-        /// <summary>
+
         /// Returns true if the player can move right from their current position.
-        /// </summary>
+        
         private bool CanPartyLeaderMoveRight()
         {
             // if they're not within the tolerance of the next tile, then this is moot
@@ -350,9 +350,9 @@ namespace RPG_Game_XNA.TileEngine
         }
 
 
-        /// <summary>
+
         /// Performs any actions associated with moving into a new tile.
-        /// </summary>
+        
         /// <returns>True if the character can move into the tile.</returns>
         public bool MoveIntoTile(Point mapPosition)
         {
@@ -366,9 +366,9 @@ namespace RPG_Game_XNA.TileEngine
             return true;
         }
 
-        /// <summary>
+
         /// Draw the visible tiles in the given map layers.
-        /// </summary>
+        
         public void DrawLayers(bool drawBase,
             bool drawFringe, bool drawObjects)
         {
@@ -425,9 +425,9 @@ namespace RPG_Game_XNA.TileEngine
         }
 
 
-        /// <summary>
+
         /// Returns true if the given rectangle is within the viewport.
-        /// </summary>
+        
         public bool CheckVisibility(Rectangle screenRectangle)
         {
             return ((screenRectangle.X > viewport.X - screenRectangle.Width) &&
@@ -443,7 +443,7 @@ namespace RPG_Game_XNA.TileEngine
                 if (trigger.MapPosition.X <= PartyLeaderPosition.TilePosition.X && trigger.MapPosition.Y <= PartyLeaderPosition.TilePosition.Y &&
                     trigger.MapMaxPosition.X >= PartyLeaderPosition.TilePosition.X && trigger.MapMaxPosition.Y >= PartyLeaderPosition.TilePosition.Y)
                 {
-                    GameStateManagement.GameStateManager.Instance.AddScreen(new PopUpScreen(trigger.Action.Split(';')), true, false);
+                    ScriptEngine.ScriptEngine.Instance.Execute(trigger.Action);
                 }
             }
         }

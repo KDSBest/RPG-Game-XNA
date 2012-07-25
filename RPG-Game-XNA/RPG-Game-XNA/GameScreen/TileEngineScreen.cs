@@ -14,6 +14,7 @@ namespace RPG_Game_XNA.GameScreen
         public TileEngineHelper TileEngine;
         private Vector2 userMovement;
         private Texture2D PlayerDummy;
+        private Random random;
 
         public TileEngineScreen(Map map)
             : base()
@@ -22,6 +23,7 @@ namespace RPG_Game_XNA.GameScreen
             TileEngine = new TileEngineHelper();
             TileEngine.SetMap(map, -1);
             PlayerDummy = Globals.Instance.Content.Load<Texture2D>("Player");
+            random = new Random();
         }
 
         public override void Draw(GameTime time)
@@ -73,6 +75,10 @@ namespace RPG_Game_XNA.GameScreen
             // if the tile position has changed, check for random combat
             if (TileEngine.PartyLeaderPosition.TilePosition != oldPartyLeaderTilePosition)
             {
+                int fight = random.Next(1000);
+                string[] test = { "FIGHT!" };
+                if(fight < TileEngine.Map.RandomFightPossibility)
+                    GameStateManager.Instance.AddScreen(new PopUpScreen(test), true, false);
                 //                Session.CheckForRandomCombat(Map.RandomCombat);
             }
 

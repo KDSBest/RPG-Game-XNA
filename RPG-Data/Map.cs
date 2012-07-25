@@ -8,7 +8,7 @@ namespace RPGData
 {
     /// <summary>
     /// One section of the world, and all of the data in it.
-    /// </summary>
+    
     public class Map
     {
         public string Name;
@@ -42,14 +42,14 @@ namespace RPGData
         #region Base Layer
 
 
-        /// <summary>
+
         /// Spatial array for the ground tiles for this map.
-        /// </summary>
+        
         private int[] baseLayer;
 
-        /// <summary>
+
         /// Spatial array for the ground tiles for this map.
-        /// </summary>
+        
         public int[] BaseLayer
         {
             get { return baseLayer; }
@@ -57,9 +57,9 @@ namespace RPGData
         }
 
 
-        /// <summary>
+
         /// Retrieves the base layer value for the given map position.
-        /// </summary>
+        
         public int GetBaseLayerValue(Point mapPosition)
         {
             // check the parameter
@@ -73,10 +73,10 @@ namespace RPGData
         }
         
 
-        /// <summary>
+
         /// Retrieves the source rectangle for the tile in the given position
         /// in the base layer.
-        /// </summary>
+        
         /// <remarks>This method allows out-of-bound (blocked) positions.</remarks>
         public Rectangle GetBaseLayerSourceRectangle(Point mapPosition)
         {
@@ -105,14 +105,14 @@ namespace RPGData
 
         #region Fringe Layer
 
-        /// <summary>
+
         /// Spatial array for the fringe tiles for this map.
-        /// </summary>
+        
         private int[] fringeLayer;
 
-        /// <summary>
+
         /// Spatial array for the fringe tiles for this map.
-        /// </summary>
+        
         public int[] FringeLayer
         {
             get { return fringeLayer; }
@@ -120,9 +120,9 @@ namespace RPGData
         }
 
 
-        /// <summary>
+
         /// Retrieves the fringe layer value for the given map position.
-        /// </summary>
+        
         public int GetFringeLayerValue(Point mapPosition)
         {
             // check the parameter
@@ -136,10 +136,10 @@ namespace RPGData
         }
 
 
-        /// <summary>
+
         /// Retrieves the source rectangle for the tile in the given position
         /// in the fringe layer.
-        /// </summary>
+        
         /// <remarks>This method allows out-of-bound (blocked) positions.</remarks>
         public Rectangle GetFringeLayerSourceRectangle(Point mapPosition)
         {
@@ -165,14 +165,14 @@ namespace RPGData
         #endregion
 
         #region Object Layer
-        /// <summary>
+
         /// Spatial array for the fringe tiles for this map.
-        /// </summary>
+        
         private int[] objectLayer;
 
-        /// <summary>
+
         /// Spatial array for the fringe tiles for this map.
-        /// </summary>
+        
         public int[] ObjectLayer
         {
             get { return objectLayer; }
@@ -218,14 +218,14 @@ namespace RPGData
         #region Collision Layer
 
 
-        /// <summary>
+
         /// Spatial array for the collision properties of this map.
-        /// </summary>
+        
         private int[] collisionLayer;
 
-        /// <summary>
+
         /// Spatial array for the collision properties of this map.
-        /// </summary>
+        
         public int[] CollisionLayer
         {
             get { return collisionLayer; }
@@ -233,9 +233,9 @@ namespace RPGData
         }
 
 
-        /// <summary>
+
         /// Retrieves the collision layer value for the given map position.
-        /// </summary>
+        
         public int GetCollisionLayerValue(Point mapPosition)
         {
             // check the parameter
@@ -249,9 +249,9 @@ namespace RPGData
         }
 
 
-        /// <summary>
+
         /// Returns true if the given map position is blocked.
-        /// </summary>
+        
         /// <remarks>This method allows out-of-bound (blocked) positions.</remarks>
         public bool IsBlocked(Point mapPosition)
         {
@@ -274,14 +274,14 @@ namespace RPGData
         #region Portals
 
 
-        /// <summary>
+
         /// Portals to other maps.
-        /// </summary>
+        
         private List<Point> portals = new List<Point>();
 
-        /// <summary>
+
         /// Portals to other maps.
-        /// </summary>
+        
         public List<Point> Portals
         {
             get { return portals; }
@@ -306,13 +306,25 @@ namespace RPGData
         }
 
         public List<Trigger> Trigger = new List<Trigger>();
+        private int randomFightPossibility;
+        public int RandomFightPossibility
+        {
+            get
+            {
+                return randomFightPossibility;
+            }
+            set
+            {
+                randomFightPossibility = value;
+            }
+        }
 
         #region Content Type Reader
 
 
-        /// <summary>
+
         /// Read a Map object from the content pipeline.
-        /// </summary>
+        
         public class MapReader : ContentTypeReader<Map>
         {
             protected override Map Read(ContentReader input, Map existingInstance)
@@ -340,6 +352,7 @@ namespace RPGData
                 map.CollisionLayer = input.ReadObject<int[]>();
                 map.Portals.AddRange(input.ReadObject<List<Point>>());
                 map.Trigger.AddRange(input.ReadObject<List<Trigger>>());
+                map.RandomFightPossibility = input.ReadInt32();
                 return map;
             }
         }
