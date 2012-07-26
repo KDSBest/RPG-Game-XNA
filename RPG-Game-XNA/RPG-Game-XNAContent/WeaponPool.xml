@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<XnaContent>
+  <Asset Type="RPGData.WeaponPool">
+    <Pool>
+      <Item>
+        <Name>Bare Hands</Name>
+        <Damage>2</Damage>
+        <MagicDamage>1</MagicDamage>
+      </Item>
+    </Pool>
+  </Asset>
+</XnaContent>

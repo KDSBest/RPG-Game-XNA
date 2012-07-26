@@ -55,9 +55,6 @@ namespace RPGData
 
         #region Content Type Reader
 
-
-        
-        
         public class TriggerReader : ContentTypeReader<Trigger>
         {
     
@@ -79,7 +76,6 @@ namespace RPGData
                 return desc;
             }
         }
-
 
         #endregion
     }

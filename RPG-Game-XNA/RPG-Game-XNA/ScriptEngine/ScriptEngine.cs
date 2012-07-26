@@ -10,7 +10,7 @@ namespace RPG_Game_XNA.ScriptEngine
 {
     public class ScriptEngine
     {
-        Dictionary<string, object> Context;
+        private Dictionary<string, object> Context;
 
         public object GetVar(string Name)
         {
@@ -27,7 +27,7 @@ namespace RPG_Game_XNA.ScriptEngine
                 Context.Add(Name, Var);
         }
 
-        private ScriptEngine()
+        public ScriptEngine()
         {
             Context = new Dictionary<string, object>();
         }
@@ -42,6 +42,42 @@ namespace RPG_Game_XNA.ScriptEngine
                         for (int i = 0; i < Parameter.Length; i++)
                             Parameter[i] = command.Parameter[i].Value;
                         GameStateManager.Instance.AddScreen(new PopUpScreen(Parameter), true, false);
+                    }
+                    break;
+                case "GiveItem":
+                    {
+                        if (command.Parameter.Count == 2)
+                        {
+                            int count;
+                            int.TryParse(command.Parameter[1].Value, out count);
+                            Session.currentSession.Inventory.AddItem(command.Parameter[0].Value, count);
+                        }
+                        else if (command.Parameter.Count == 1)
+                        {
+                            Session.currentSession.Inventory.AddItem(command.Parameter[0].Value, 1);
+                        }
+                        else
+                        {
+                            return;
+                        }
+                    }
+                    break;
+                case "TakeItem":
+                    {
+                        if (command.Parameter.Count == 2)
+                        {
+                            int count;
+                            int.TryParse(command.Parameter[1].Value, out count);
+                            Session.currentSession.Inventory.RemoveItem(command.Parameter[0].Value, count);
+                        }
+                        else if (command.Parameter.Count == 1)
+                        {
+                            Session.currentSession.Inventory.RemoveItem(command.Parameter[0].Value, 1);
+                        }
+                        else
+                        {
+                            return;
+                        }
                     }
                     break;
             }

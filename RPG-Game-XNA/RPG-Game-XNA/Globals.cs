@@ -20,6 +20,7 @@ namespace RPG_Game_XNA
         public float ScreenWidthHalf;
         public Texture2D PixelWhite;
         public Texture2D Gardient;
+
         public Globals()
         {
         }

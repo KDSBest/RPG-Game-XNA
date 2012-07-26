@@ -49,6 +49,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Items\ArmourWriter.cs" />
+    <Compile Include="Items\ConsumableWriter.cs" />
+    <Compile Include="Items\ArmourPoolWriter.cs" />
+    <Compile Include="Items\ConsumablePoolWriter.cs" />
+    <Compile Include="Items\WeaponPoolWriter.cs" />
+    <Compile Include="Items\WeaponWriter.cs" />
     <Compile Include="MapWriter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RolePlayingGameWriter.cs" />

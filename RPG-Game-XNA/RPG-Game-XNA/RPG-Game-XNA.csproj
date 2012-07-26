@@ -116,14 +116,17 @@
     <Compile Include="GameStateManagement\InputState.cs" />
     <Compile Include="Globals.cs" />
     <Compile Include="Interfaces\IMenuEntry.cs" />
+    <Compile Include="Inventory.cs" />
+    <Compile Include="ItemPool.cs" />
     <Compile Include="MenuEntries\MenuEntryTestPopUp.cs" />
     <Compile Include="MenuEntries\MenuEntryQuit.cs" />
-    <Compile Include="MenuEntries\MenuEntryTestTileEngine.cs" />
-    <Compile Include="Player.cs" />
+    <Compile Include="MenuEntries\MenuEntryNewGame.cs" />
+    <Compile Include="Character.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="ScriptEngine\ScriptEngine.cs" />
+    <Compile Include="Session.cs" />
     <Compile Include="TileEngine\PlayerPosition.cs" />
     <Compile Include="TileEngine\TileEngineHelper.cs" />
   </ItemGroup>

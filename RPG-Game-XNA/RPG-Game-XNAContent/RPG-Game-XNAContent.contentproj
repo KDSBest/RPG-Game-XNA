@@ -56,10 +56,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Map001.xml">
-      <Name>Map001</Name>
+    <Compile Include="Maps\StartLevel.xml">
+      <Name>StartLevel</Name>
       <Importer>XmlImporter</Importer>
       <Processor>PassThroughProcessor</Processor>
+      <SubType>Designer</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -73,6 +74,30 @@
       <Name>Player</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ConsumablePool.xml">
+      <SubType>Designer</SubType>
+      <Name>ConsumablePool</Name>
+      <Importer>XmlImporter</Importer>
+      <Processor>PassThroughProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ArmourPool.xml">
+      <SubType>Designer</SubType>
+      <Name>ArmourPool</Name>
+      <Importer>XmlImporter</Importer>
+      <Processor>PassThroughProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="WeaponPool.xml">
+      <SubType>Designer</SubType>
+      <Name>WeaponPool</Name>
+      <Importer>XmlImporter</Importer>
+      <Processor>PassThroughProcessor</Processor>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />

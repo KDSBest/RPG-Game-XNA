@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<XnaContent>
+  <Asset Type="RPGData.ConsumablePool">
+    <Pool>
+      <Item>
+        <Name>Small Potion</Name>
+        <Action>
+          <Item>
+            <Parameter/>
+            <Body/>
+            <Body2/>
+            <Type>ChoosePartyMember</Type>
+          </Item>
+          <Item>
+            <Parameter>
+              <Item>
+                <Type>Integer</Type>
+                <Value>100</Value>
+              </Item>
+            </Parameter>
+            <Body/>
+            <Body2/>
+            <Type>HealSelected</Type>
+          </Item>
+        </Action>
+      </Item>
+      <Item>
+        <Name>Potion</Name>
+        <Action>
+          <Item>
+            <Parameter/>
+            <Body/>
+            <Body2/>
+            <Type>ChoosePartyMember</Type>
+          </Item>
+          <Item>
+            <Parameter>
+              <Item>
+                <Type>Integer</Type>
+                <Value>250</Value>
+              </Item>
+            </Parameter>
+            <Body/>
+            <Body2/>
+            <Type>HealSelected</Type>
+          </Item>
+        </Action>
+      </Item>
+    </Pool>
+  </Asset>
+</XnaContent>

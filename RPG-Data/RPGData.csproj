@@ -94,6 +94,9 @@
   <ItemGroup>
     <Compile Include="Items\Armour.cs" />
     <Compile Include="Items\Consumable.cs" />
+    <Compile Include="Items\ConsumablePool.cs" />
+    <Compile Include="Items\WeaponPool.cs" />
+    <Compile Include="Items\ArmourPool.cs" />
     <Compile Include="Items\Item.cs" />
     <Compile Include="ScriptEngine\ScriptEngineCommand.cs" />
     <Compile Include="Map.cs" />

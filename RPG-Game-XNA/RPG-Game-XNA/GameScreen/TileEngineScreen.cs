@@ -16,12 +16,12 @@ namespace RPG_Game_XNA.GameScreen
         private Texture2D PlayerDummy;
         private Random random;
 
-        public TileEngineScreen(Map map)
+        public TileEngineScreen()
             : base()
         {
             userMovement = Vector2.Zero;
             TileEngine = new TileEngineHelper();
-            TileEngine.SetMap(map, -1);
+            TileEngine.SetMap(Session.currentSession.Map, -1);
             PlayerDummy = Globals.Instance.Content.Load<Texture2D>("Player");
             random = new Random();
         }

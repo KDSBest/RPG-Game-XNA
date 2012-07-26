@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<XnaContent>
+  <Asset Type="RPGData.ArmourPool">
+    <Pool>
+      <Item>
+        <Name>T-Shirt</Name>
+        <Defense>2</Defense>
+        <MagicDefense>1</MagicDefense>
+      </Item>
+    </Pool>
+  </Asset>
+</XnaContent>
