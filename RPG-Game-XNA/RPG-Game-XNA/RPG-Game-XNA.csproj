@@ -107,10 +107,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AbstractGameScreen\MenuCategoryScreen.cs" />
     <Compile Include="AbstractGameScreen\MenuScreen.cs" />
+    <Compile Include="GameScreen\InventoryScreen.cs" />
     <Compile Include="GameScreen\MainMenuScreen.cs" />
     <Compile Include="GameScreen\PopUpScreen.cs" />
     <Compile Include="GameScreen\TileEngineScreen.cs" />
+    <Compile Include="GameScreen\WorldMenuScreen.cs" />
     <Compile Include="GameStateManagement\GameStateScreen.cs" />
     <Compile Include="GameStateManagement\GameStateManager.cs" />
     <Compile Include="GameStateManagement\InputState.cs" />
@@ -118,9 +121,14 @@
     <Compile Include="Interfaces\IMenuEntry.cs" />
     <Compile Include="Inventory.cs" />
     <Compile Include="ItemPool.cs" />
-    <Compile Include="MenuEntries\MenuEntryTestPopUp.cs" />
-    <Compile Include="MenuEntries\MenuEntryQuit.cs" />
-    <Compile Include="MenuEntries\MenuEntryNewGame.cs" />
+    <Compile Include="Menu\Items\MenuEntryWeapon.cs" />
+    <Compile Include="Menu\Items\MenuEntryArmour.cs" />
+    <Compile Include="Menu\Items\MenuEntryConsumable.cs" />
+    <Compile Include="Menu\Items\MenuEntryItem.cs" />
+    <Compile Include="Menu\MenuEntryInventory.cs" />
+    <Compile Include="Menu\MenuEntryTestPopUp.cs" />
+    <Compile Include="Menu\MenuEntryQuit.cs" />
+    <Compile Include="Menu\MenuEntryNewGame.cs" />
     <Compile Include="Character.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />

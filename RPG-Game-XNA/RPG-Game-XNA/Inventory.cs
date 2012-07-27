@@ -52,5 +52,21 @@ namespace RPG_Game_XNA
             }
             return false;
         }
+
+        public void GetItems(out Dictionary<Consumable, int> Consumable, out Dictionary<Weapon, int> Weapon, out Dictionary<Armour, int> Armour)
+        {
+            Consumable = new Dictionary<Consumable, int>();
+            Weapon = new Dictionary<Weapon, int>();
+            Armour = new Dictionary<Armour, int>();
+            foreach (Item Item in Items.Keys)
+            {
+                if (Item is Consumable)
+                    Consumable.Add((Consumable)Item, Items[Item]);
+                if (Item is Weapon)
+                    Weapon.Add((Weapon)Item, Items[Item]);
+                if (Item is Armour)
+                    Armour.Add((Armour)Item, Items[Item]);
+            }
+        }
     }
 }

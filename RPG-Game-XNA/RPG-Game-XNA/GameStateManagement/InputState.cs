@@ -71,6 +71,16 @@ namespace RPG_Game_XNA.GameStateManagement
             return IsNewKeyPress(Keys.Escape);
         }
 
+        public bool IsBack()
+        {
+            return IsNewKeyPress(Keys.Escape);
+        }
+
+        public bool IsMenu()
+        {
+            return IsNewKeyPress(Keys.Escape);
+        }
+
         public bool IsUp()
         {
             return IsKeyDown(Keys.Up);
@@ -87,5 +97,6 @@ namespace RPG_Game_XNA.GameStateManagement
         {
             return IsKeyDown(Keys.Right);
         }
+        
     }
 }

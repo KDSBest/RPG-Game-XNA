@@ -44,9 +44,9 @@ namespace RPG_Game_XNA.GameScreen
             userMovement = TileEngine.UpdateUserMovement(input.IsUp(), input.IsDown(), input.IsLeft(), input.IsRight());
 
             if (input.IsMenuSelect())
-            {
                 TileEngine.TriggerEvent();
-            }
+            if (input.IsMenu())
+                GameStateManager.Instance.AddScreen(new WorldMenuScreen(), true, false);
             return true;
         }
 

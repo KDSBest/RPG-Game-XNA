@@ -20,6 +20,7 @@ namespace RPG_Game_XNA
         public float ScreenWidthHalf;
         public Texture2D PixelWhite;
         public Texture2D Gardient;
+        public Rectangle FullScreenRectangle;
 
         public Globals()
         {
@@ -36,6 +37,7 @@ namespace RPG_Game_XNA
             ScreenWidth = Graphics.Viewport.Width;
             ScreenHeightHalf = ScreenHeight / 2;
             ScreenWidthHalf = ScreenWidth / 2;
+            FullScreenRectangle = new Rectangle(0, 0, (int)ScreenWidth, (int)ScreenHeight);
 
             PixelWhite = new Texture2D(Graphics, 1, 1);
             Color[] data = { Color.White };
