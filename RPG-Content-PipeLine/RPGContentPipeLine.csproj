@@ -49,6 +49,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CharacterDataWriter.cs" />
     <Compile Include="Items\ArmourWriter.cs" />
     <Compile Include="Items\ConsumableWriter.cs" />
     <Compile Include="Items\ArmourPoolWriter.cs" />

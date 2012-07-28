@@ -17,6 +17,7 @@ namespace RPG_Game_XNA
         {
             Party = new List<Character>();
             Inventory = new Inventory();
+            Party.Add(new Character("Natsu", 0, (Weapon)ItemPool.Instance.GetItem("Bare Hands"), (Armour)ItemPool.Instance.GetItem("T-Shirt"))); 
             Map = Globals.Instance.Content.Load<Map>("Maps\\StartLevel");
         }
     }

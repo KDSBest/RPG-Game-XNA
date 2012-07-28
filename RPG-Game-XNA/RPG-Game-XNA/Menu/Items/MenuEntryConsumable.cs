@@ -18,6 +18,8 @@ namespace RPG_Game_XNA.Menu.Items
 
         public override void Select()
         {
+            ScriptEngine.ScriptEngine.Instance.SetVar("Consumable", Item.Name);
+            ScriptEngine.ScriptEngine.Instance.Execute(((Consumable)Item).Action);
         }
     }
 }

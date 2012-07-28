@@ -80,6 +80,10 @@ namespace RPG_Game_XNA.AbstractGameScreen
             string text = "";
             Vector2 textSize;
             drawPosition.Y = Globals.Instance.ScreenHeightHalf - MenuSize / 2;
+            if (selected >= Entries.Count)
+                selected = Entries.Count - 1;
+            if (selected < 0)
+                selected = 0;
             for (int i = 0; i < Entries.Count; i++)
             {
                 text = Entries[i].GetText();

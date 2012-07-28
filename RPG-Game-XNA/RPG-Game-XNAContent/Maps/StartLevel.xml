@@ -118,45 +118,97 @@
           <Item>
             <Parameter>
               <Item>
-                <Type>String</Type>
-                <Value>Small Potion</Value>
-              </Item>
-              <Item>
-                <Type>Integer</Type>
-                <Value>10</Value>
+                <Type>Bool</Type>
+                <Value>StartLevelFountItems</Value>
               </Item>
             </Parameter>
-            <Body/>
-            <Body2/>
-            <Type>GiveItem</Type>
-          </Item>
-          <Item>
-            <Parameter>
+            <Body>
               <Item>
-                <Type>String</Type>
-                <Value>I found 10 Small Potions.</Value>
+                <Parameter>
+                  <Item>
+                    <Type>String</Type>
+                    <Value>Nothing here.</Value>
+                  </Item>
+                </Parameter>
+                <Type>ShowText</Type>
+              </Item>
+            </Body>
+            <Body2>
+              <Item>
+                <Parameter>
+                  <Item>
+                    <Type>String</Type>
+                    <Value>StartLevelFountItems</Value>
+                  </Item>
+                  <Item>
+                    <Type>Bool</Type>
+                    <Value>true</Value>
+                  </Item>
+                </Parameter>
+                <Body/>
+                <Body2/>
+                <Type>SetVarBool</Type>
               </Item>
               <Item>
-                <Type>String</Type>
-                <Value>I Damaged 5 Small Potions.</Value>
+                <Parameter>
+                  <Item>
+                    <Type>String</Type>
+                    <Value>Small Potion</Value>
+                  </Item>
+                  <Item>
+                    <Type>Integer</Type>
+                    <Value>10</Value>
+                  </Item>
+                </Parameter>
+                <Body/>
+                <Body2/>
+                <Type>GiveItem</Type>
               </Item>
-            </Parameter>
-            <Type>ShowText</Type>
-          </Item>
-          <Item>
-            <Parameter>
               <Item>
-                <Type>String</Type>
-                <Value>Small Potion</Value>
+                <Parameter>
+                  <Item>
+                    <Type>String</Type>
+                    <Value>Small Poison</Value>
+                  </Item>
+                  <Item>
+                    <Type>Integer</Type>
+                    <Value>5</Value>
+                  </Item>
+                </Parameter>
+                <Body/>
+                <Body2/>
+                <Type>GiveItem</Type>
               </Item>
               <Item>
-                <Type>Integer</Type>
-                <Value>5</Value>
+                <Parameter>
+                  <Item>
+                    <Type>String</Type>
+                    <Value>Small Exp Drink</Value>
+                  </Item>
+                  <Item>
+                    <Type>Integer</Type>
+                    <Value>99</Value>
+                  </Item>
+                </Parameter>
+                <Body/>
+                <Body2/>
+                <Type>GiveItem</Type>
               </Item>
-            </Parameter>
-            <Body/>
-            <Body2/>
-            <Type>TakeItem</Type>
+              <Item>
+                <Parameter>
+                  <Item>
+                    <Type>String</Type>
+                    <Value>I found 10 Small Potions.</Value>
+                  </Item>
+                  <Item>
+                    <Type>String</Type>
+                    <Value>I found 5 Small Poisions.</Value>
+                  </Item>
+                </Parameter>
+                <Type>ShowText</Type>
+              </Item>
+            </Body2>
+            <Type>IfBoolVar</Type>
           </Item>
         </Action>
       </Item>

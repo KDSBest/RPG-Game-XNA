@@ -8,18 +8,63 @@ namespace RPG_Game_XNA
 {
     public class Character
     {
+        public Weapon Weapon;
+        public Armour Armour;
+        public CharacterData CharInfo;
+
+        public int Level;
+        private int _Experience;
+        public int Experience
+        {
+            get
+            {
+                return _Experience;
+            }
+            set
+            {
+                _Experience = value;
+                while (ExperienceForNextLevel() < _Experience && Level < MaxLevel)
+                    Level++;
+            }
+        }
+        public string Name;
+
+        public const int MaxLevel = 99;
+
+        public Character(string Name, int Experience, Weapon Weapon, Armour Armour)
+        {
+            this.Name = Name;
+            CharInfo = Globals.Instance.Content.Load<CharacterData>("Character\\" + Name);
+
+            Level = 1;
+            this.Experience = Experience;
+            HP = MaxHP;
+            MP = MaxMP;
+            this.Weapon = Weapon;
+            this.Armour = Armour;
+        }
+
+        public static int BasicStatFormula(int Base, int Max, int X, int MaxX)
+        {
+            float val = (float)X / (float)MaxX;
+            return (int)(Base + ((float)(Max - Base)) * ((val * val + val) / 2));
+        }
+
+        public int HP;
+        public int MP;
+
         public int Vitality
         {
             get
             {
-                return 0;
+                return BasicStatFormula(CharInfo.VitalityBase, CharInfo.VitalityMax, Level, MaxLevel);
             }
         }
         public int Strength
         {
             get
             {
-                return 0;
+                return BasicStatFormula(CharInfo.StrengthBase, CharInfo.StrengthMax, Level, MaxLevel);
             }
         }
 
@@ -27,7 +72,7 @@ namespace RPG_Game_XNA
         {
             get
             {
-                return 0;
+                return BasicStatFormula(CharInfo.MagicBase, CharInfo.MagicMax, Level, MaxLevel);
             }
         }
 
@@ -35,7 +80,7 @@ namespace RPG_Game_XNA
         {
             get
             {
-                return 0;
+                return BasicStatFormula(CharInfo.SpiritBase, CharInfo.SpiritMax, Level, MaxLevel);
             }
         }
 
@@ -43,23 +88,7 @@ namespace RPG_Game_XNA
         {
             get
             {
-                return 0;
-            }
-        }
-
-        public int HP
-        {
-            get
-            {
-                return 0;
-            }
-        }
-
-        public int MP
-        {
-            get
-            {
-                return 0;
+                return BasicStatFormula(CharInfo.LuckBase, CharInfo.LuckMax, Level, MaxLevel);
             }
         }
 
@@ -67,7 +96,23 @@ namespace RPG_Game_XNA
         {
             get
             {
-                return 0;
+                return BasicStatFormula(CharInfo.DexterityBase, CharInfo.DexterityMax, Level, MaxLevel);
+            }
+        }
+
+        public int MaxHP
+        {
+            get
+            {
+                return BasicStatFormula(CharInfo.HPBase, CharInfo.HPMax, Vitality, 255);
+            }
+        }
+
+        public int MaxMP
+        {
+            get
+            {
+                return BasicStatFormula(CharInfo.MPBase, CharInfo.MPMax, Spirit, 255);
             }
         }
 
@@ -102,12 +147,6 @@ namespace RPG_Game_XNA
                 return (Spirit + Armour.MagicDefense);
             }
         }
-
-        public Weapon Weapon;
-        public Armour Armour;
-
-        public int Level;
-        public int Experience;
 
         public int ExperienceForNextLevel()
         {

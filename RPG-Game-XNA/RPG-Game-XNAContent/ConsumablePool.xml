@@ -3,46 +3,71 @@
   <Asset Type="RPGData.ConsumablePool">
     <Pool>
       <Item>
-        <Name>Small Potion</Name>
+        <Name>Small Poison</Name>
         <Action>
           <Item>
             <Parameter/>
-            <Body/>
+            <Body>
+              <Item>
+                <Parameter>
+                  <Item>
+                    <Type>Integer</Type>
+                    <Value>50</Value>
+                  </Item>
+                </Parameter>
+                <Body/>
+                <Body2/>
+                <Type>DamageSelected</Type>
+              </Item>
+            </Body>
             <Body2/>
             <Type>ChoosePartyMember</Type>
-          </Item>
-          <Item>
-            <Parameter>
-              <Item>
-                <Type>Integer</Type>
-                <Value>100</Value>
-              </Item>
-            </Parameter>
-            <Body/>
-            <Body2/>
-            <Type>HealSelected</Type>
           </Item>
         </Action>
       </Item>
       <Item>
-        <Name>Potion</Name>
+        <Name>Small Potion</Name>
         <Action>
           <Item>
             <Parameter/>
-            <Body/>
+            <Body>
+              <Item>
+                <Parameter>
+                  <Item>
+                    <Type>Integer</Type>
+                    <Value>100</Value>
+                  </Item>
+                </Parameter>
+                <Body/>
+                <Body2/>
+                <Type>HealSelected</Type>
+              </Item>
+            </Body>
             <Body2/>
             <Type>ChoosePartyMember</Type>
           </Item>
+        </Action>
+      </Item>
+      <Item>
+        <Name>Small Exp Drink</Name>
+        <Action>
           <Item>
-            <Parameter>
+            <Parameter/>
+            <Body>
               <Item>
-                <Type>Integer</Type>
-                <Value>250</Value>
+                <Parameter>
+                  <Item>
+                    <Type>Integer</Type>
+                    <Value>100000</Value>
+                  </Item>
+                </Parameter>
+                <Body/>
+                <Body2/>
+                <Type>GiveExpSelected</Type>
               </Item>
-            </Parameter>
-            <Body/>
+            </Body>
             <Body2/>
-            <Type>HealSelected</Type>
+            <Type>ChoosePartyMember</Type>
           </Item>
         </Action>
       </Item>

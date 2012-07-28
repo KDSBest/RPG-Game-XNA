@@ -45,40 +45,90 @@ namespace RPG_Game_XNA.ScriptEngine
                     }
                     break;
                 case "GiveItem":
+                    if (command.Parameter.Count == 2)
                     {
-                        if (command.Parameter.Count == 2)
-                        {
-                            int count;
-                            int.TryParse(command.Parameter[1].Value, out count);
-                            Session.currentSession.Inventory.AddItem(command.Parameter[0].Value, count);
-                        }
-                        else if (command.Parameter.Count == 1)
-                        {
-                            Session.currentSession.Inventory.AddItem(command.Parameter[0].Value, 1);
-                        }
-                        else
-                        {
-                            return;
-                        }
+                        int count;
+                        int.TryParse(command.Parameter[1].Value, out count);
+                        Session.currentSession.Inventory.AddItem(command.Parameter[0].Value, count);
+                    }
+                    else if (command.Parameter.Count == 1)
+                    {
+                        Session.currentSession.Inventory.AddItem(command.Parameter[0].Value, 1);
+                    }
+                    else
+                    {
+                        return;
                     }
                     break;
                 case "TakeItem":
+                    if (command.Parameter.Count == 2)
                     {
-                        if (command.Parameter.Count == 2)
+                        int count;
+                        int.TryParse(command.Parameter[1].Value, out count);
+                        Session.currentSession.Inventory.RemoveItem(command.Parameter[0].Value, count);
+                    }
+                    else if (command.Parameter.Count == 1)
+                    {
+                        Session.currentSession.Inventory.RemoveItem(command.Parameter[0].Value, 1);
+                    }
+                    else
+                    {
+                        return;
+                    }
+                    break;
+                case "ChoosePartyMember":
+                    //Sets
+                    //ScriptEngine.ScriptEngine.Instance.SetVar("PartySelect", selected);
+                    GameStateManager.Instance.AddScreen(new PartySelectScreen(command.Body), true, false);
+                    break;
+                case "DamageSelected":
+                    {
+                        //Has ScriptEngine.ScriptEngine.Instance.SetVar("Consumeable", Item.Name);
+                        Character cha = Session.currentSession.Party[(int)GetVar("PartySelect")];
+                        if (cha.HP > 0)
                         {
-                            int count;
-                            int.TryParse(command.Parameter[1].Value, out count);
-                            Session.currentSession.Inventory.RemoveItem(command.Parameter[0].Value, count);
-                        }
-                        else if (command.Parameter.Count == 1)
-                        {
-                            Session.currentSession.Inventory.RemoveItem(command.Parameter[0].Value, 1);
-                        }
-                        else
-                        {
-                            return;
+                            Session.currentSession.Inventory.RemoveItem(ItemPool.Instance.GetItem((string)GetVar("Consumable")), 1);
+                            cha.HP -= int.Parse(command.Parameter[0].Value);
+                            if (cha.HP < 0)
+                                cha.HP = 0;
                         }
                     }
+                    break;
+                case "HealSelected":
+                    {
+                        //Has ScriptEngine.ScriptEngine.Instance.SetVar("Consumeable", Item.Name);
+                        Character cha = Session.currentSession.Party[(int)GetVar("PartySelect")];
+                        if (cha.HP < cha.MaxHP)
+                        {
+                            Session.currentSession.Inventory.RemoveItem(ItemPool.Instance.GetItem((string)GetVar("Consumable")), 1);
+                            cha.HP += int.Parse(command.Parameter[0].Value);
+                            if (cha.HP > cha.MaxHP)
+                                cha.HP = cha.MaxHP;
+                        }
+                    }
+                    break;
+                case "GiveExpSelected":
+                    {
+                        //Has ScriptEngine.ScriptEngine.Instance.SetVar("Consumeable", Item.Name);
+                        Character cha = Session.currentSession.Party[(int)GetVar("PartySelect")];
+                        if (cha.Level < Character.MaxLevel)
+                        {
+                            Session.currentSession.Inventory.RemoveItem(ItemPool.Instance.GetItem((string)GetVar("Consumable")), 1);
+                            cha.Experience += int.Parse(command.Parameter[0].Value);
+                        }
+                    }
+                    break;
+                case "IfBoolVar":
+                    {
+                        object var = (object)GetVar(command.Parameter[0].Value);
+                        if(var == null || !(bool) var)
+                            ScriptEngine.Instance.Execute(command.Body2);
+                        else
+                            ScriptEngine.Instance.Execute(command.Body);
+                    }
+                    break;
+                case "SetVarBool":
+                    SetVar(command.Parameter[0].Value, command.Parameter[1].Value == "true");
                     break;
             }
         }

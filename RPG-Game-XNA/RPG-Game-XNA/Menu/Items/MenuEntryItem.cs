@@ -11,8 +11,8 @@ namespace RPG_Game_XNA.Menu.Items
 {
     public abstract class MenuEntryItem : IMenuEntry
     {
-        private Item Item;
-        private int Count;
+        protected Item Item;
+        protected int Count;
 
         public MenuEntryItem(Item Item, int Count)
             : base()

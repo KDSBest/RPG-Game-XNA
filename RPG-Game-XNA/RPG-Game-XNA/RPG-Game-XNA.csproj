@@ -111,6 +111,7 @@
     <Compile Include="AbstractGameScreen\MenuScreen.cs" />
     <Compile Include="GameScreen\InventoryScreen.cs" />
     <Compile Include="GameScreen\MainMenuScreen.cs" />
+    <Compile Include="GameScreen\PartySelectScreen.cs" />
     <Compile Include="GameScreen\PopUpScreen.cs" />
     <Compile Include="GameScreen\TileEngineScreen.cs" />
     <Compile Include="GameScreen\WorldMenuScreen.cs" />

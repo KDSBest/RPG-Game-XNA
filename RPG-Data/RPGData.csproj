@@ -93,6 +93,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Items\Armour.cs" />
+    <Compile Include="CharakterData.cs" />
     <Compile Include="Items\Consumable.cs" />
     <Compile Include="Items\ConsumablePool.cs" />
     <Compile Include="Items\WeaponPool.cs" />
