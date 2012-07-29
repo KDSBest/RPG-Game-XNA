@@ -11,6 +11,7 @@ namespace RPG_Game_XNA
         public Weapon Weapon;
         public Armour Armour;
         public CharacterData CharInfo;
+        public List<Skill> Skills;
 
         public int Level;
         private int _Experience;
@@ -28,20 +29,38 @@ namespace RPG_Game_XNA
             }
         }
         public string Name;
+        public int ATB;
 
+        public List<ScriptEngineCommand> AI;
         public const int MaxLevel = 99;
+
+        public Character(string Name, Weapon Weapon, Armour Armour)
+            : this(Name, 0, Weapon, Armour)
+        {
+
+        }
 
         public Character(string Name, int Experience, Weapon Weapon, Armour Armour)
         {
             this.Name = Name;
+            this.DisplayName = Name;
             CharInfo = Globals.Instance.Content.Load<CharacterData>("Character\\" + Name);
 
             Level = 1;
             this.Experience = Experience;
-            HP = MaxHP;
-            MP = MaxMP;
             this.Weapon = Weapon;
             this.Armour = Armour;
+            this.ATB = 0;
+            HP = MaxHP;
+            MP = MaxMP;
+            Skills = new List<Skill>();
+        }
+
+        public void SetLevel(int Level)
+        {
+            this.Level = Level;
+            this.HP = MaxHP;
+            this.MP = MaxMP;
         }
 
         public static int BasicStatFormula(int Base, int Max, int X, int MaxX)
@@ -166,6 +185,24 @@ namespace RPG_Game_XNA
             for (int a = 1; a < L; a++)
                 Exp += (int) (K * a * a);
             return Exp;
+        }
+
+        public void Damage(int Damage)
+        {
+            this.HP -= Damage;
+            if (this.HP < 0)
+                this.HP = 0;
+            if (this.HP > this.MaxHP)
+                this.HP = this.MaxHP;
+        }
+
+        public string DisplayName;
+        public bool IsAlive 
+        {
+            get
+            {
+                return HP > 0;
+            }
         }
     }
 }

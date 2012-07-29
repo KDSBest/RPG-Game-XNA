@@ -12,6 +12,7 @@ namespace RPGData
         public Consumable()
         {
             Action = new List<ScriptEngineCommand>();
+            UseableChecks = new List<string>();
         }
 
         private List<ScriptEngineCommand> action;
@@ -21,6 +22,8 @@ namespace RPGData
             get { return action; }
             set { action = value; }
         }
+
+        public List<String> UseableChecks;
 
         #region Content Type Reader
         public class ConsumableReader : ContentTypeReader<Consumable>
@@ -36,7 +39,7 @@ namespace RPGData
 
                 sc.Name = input.ReadString();
                 sc.Action.AddRange(input.ReadObject<List<ScriptEngineCommand>>());
-
+                sc.UseableChecks.AddRange(input.ReadObject<List<string>>());
                 return sc;
             }
         }

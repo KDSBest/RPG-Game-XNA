@@ -1,19 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <XnaContent>
   <Asset Type="RPGData.CharacterData">
-    <VitalityBase>10</VitalityBase>
-    <StrengthBase>10</StrengthBase>
-    <MagicBase>5</MagicBase>
+    <VitalityBase>1</VitalityBase>
+    <StrengthBase>8</StrengthBase>
+    <MagicBase>10</MagicBase>
     <SpiritBase>5</SpiritBase>
-    <LuckBase>50</LuckBase>
-    <HPBase>200</HPBase>
+    <LuckBase>20</LuckBase>
+    <HPBase>100</HPBase>
     <MPBase>200</MPBase>
     <DexterityBase>50</DexterityBase>
-    <VitalityMax>250</VitalityMax>
-    <StrengthMax>250</StrengthMax>
+    <VitalityMax>200</VitalityMax>
+    <StrengthMax>200</StrengthMax>
     <MagicMax>150</MagicMax>
     <SpiritMax>180</SpiritMax>
-    <LuckMax>80</LuckMax>
+    <LuckMax>50</LuckMax>
     <HPMax>9999</HPMax>
     <MPMax>9999</MPMax>
     <DexterityMax>100</DexterityMax>

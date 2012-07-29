@@ -28,13 +28,18 @@ namespace RPGContentPipeline
     /// This should be part of a Content Pipeline Extension Library project.
     
     [ContentTypeWriter]
-    public class ConsumableWriter : RolePlayingGameWriter<Consumable>
+    public class EnemyGroupEntryWriter : RolePlayingGameWriter<EnemyGroupEntry>
     {
-        protected override void Write(ContentWriter output, Consumable value)
+        protected override void Write(ContentWriter output, EnemyGroupEntry value)
         {
             output.Write(value.Name);
-            output.WriteObject<List<ScriptEngineCommand>>(value.Action);
-            output.WriteObject<List<string>>(value.UseableChecks);
+            output.Write(value.DisplayName);
+            output.Write(value.Level);
+            output.Write(value.WeaponName);
+            output.Write(value.ArmourName);
+            output.WriteObject<List<ScriptEngineCommand>>(value.AI);
+            output.Write(value.Experience);
+            output.WriteObject<List<ItemDrop>>(value.Items);
         }
     }
 }

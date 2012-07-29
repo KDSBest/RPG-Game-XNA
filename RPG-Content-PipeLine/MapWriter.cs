@@ -74,6 +74,7 @@ namespace RPGContentPipeline
             output.WriteObject(value.Portals);
             output.WriteObject(value.Trigger);
             output.Write(value.RandomFightPossibility);
+            output.WriteObject(value.Enemies);
         }
     }
 }

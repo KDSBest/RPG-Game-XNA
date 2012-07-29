@@ -3,73 +3,44 @@
   <Asset Type="RPGData.ConsumablePool">
     <Pool>
       <Item>
-        <Name>Small Poison</Name>
+        <Name>Small Refresher</Name>
         <Action>
           <Item>
-            <Parameter/>
-            <Body>
+            <Parameter>
               <Item>
-                <Parameter>
-                  <Item>
-                    <Type>Integer</Type>
-                    <Value>50</Value>
-                  </Item>
-                </Parameter>
-                <Body/>
-                <Body2/>
-                <Type>DamageSelected</Type>
+                <Type>Integer</Type>
+                <Value>50</Value>
               </Item>
-            </Body>
+            </Parameter>
+            <Body/>
             <Body2/>
-            <Type>ChoosePartyMember</Type>
+            <Type>GiveMPSelected</Type>
           </Item>
         </Action>
+        <UseableChecks>
+          <Item>IsAlive</Item>
+          <Item>NotFullMP</Item>
+        </UseableChecks>
       </Item>
       <Item>
         <Name>Small Potion</Name>
         <Action>
           <Item>
-            <Parameter/>
-            <Body>
+            <Parameter>
               <Item>
-                <Parameter>
-                  <Item>
-                    <Type>Integer</Type>
-                    <Value>100</Value>
-                  </Item>
-                </Parameter>
-                <Body/>
-                <Body2/>
-                <Type>HealSelected</Type>
+                <Type>Integer</Type>
+                <Value>100</Value>
               </Item>
-            </Body>
+            </Parameter>
+            <Body/>
             <Body2/>
-            <Type>ChoosePartyMember</Type>
+            <Type>GiveHPSelected</Type>
           </Item>
         </Action>
-      </Item>
-      <Item>
-        <Name>Small Exp Drink</Name>
-        <Action>
-          <Item>
-            <Parameter/>
-            <Body>
-              <Item>
-                <Parameter>
-                  <Item>
-                    <Type>Integer</Type>
-                    <Value>100000</Value>
-                  </Item>
-                </Parameter>
-                <Body/>
-                <Body2/>
-                <Type>GiveExpSelected</Type>
-              </Item>
-            </Body>
-            <Body2/>
-            <Type>ChoosePartyMember</Type>
-          </Item>
-        </Action>
+        <UseableChecks>
+          <Item>IsAlive</Item>
+          <Item>NotFullHP</Item>
+        </UseableChecks>
       </Item>
     </Pool>
   </Asset>

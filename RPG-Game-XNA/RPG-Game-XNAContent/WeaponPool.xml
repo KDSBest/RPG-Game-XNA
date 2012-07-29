@@ -4,8 +4,8 @@
     <Pool>
       <Item>
         <Name>Bare Hands</Name>
-        <Damage>2</Damage>
-        <MagicDamage>1</MagicDamage>
+        <Damage>10</Damage>
+        <MagicDamage>5</MagicDamage>
       </Item>
     </Pool>
   </Asset>

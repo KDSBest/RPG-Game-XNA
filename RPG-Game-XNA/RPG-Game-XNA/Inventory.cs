@@ -53,6 +53,17 @@ namespace RPG_Game_XNA
             return false;
         }
 
+        public Dictionary<Consumable, int> GetConsumables()
+        {
+            Dictionary<Consumable, int> Consumable = new Dictionary<Consumable, int>();
+            foreach (Item Item in Items.Keys)
+            {
+                if (Item is Consumable)
+                    Consumable.Add((Consumable)Item, Items[Item]);
+            }
+            return Consumable;
+        }
+
         public void GetItems(out Dictionary<Consumable, int> Consumable, out Dictionary<Weapon, int> Weapon, out Dictionary<Armour, int> Armour)
         {
             Consumable = new Dictionary<Consumable, int>();
@@ -67,6 +78,29 @@ namespace RPG_Game_XNA
                 if (Item is Armour)
                     Armour.Add((Armour)Item, Items[Item]);
             }
+        }
+
+        public bool IsUseable(Consumable Consumable, Character Char)
+        {
+            foreach (string check in Consumable.UseableChecks)
+            {
+                switch (check)
+                {
+                    case "IsAlive":
+                        if (!Char.IsAlive)
+                            return false;
+                        break;
+                    case "NotFullMP":
+                        if (Char.MP == Char.MaxMP)
+                            return false;
+                        break;
+                    case "NotFullHP":
+                        if (Char.HP == Char.MaxHP)
+                            return false;
+                        break;
+                }
+            }
+            return true;
         }
     }
 }

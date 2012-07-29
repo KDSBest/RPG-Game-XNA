@@ -5,6 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Storage;
 
 namespace RPG_Game_XNA
 {
@@ -21,13 +22,36 @@ namespace RPG_Game_XNA
         public Texture2D PixelWhite;
         public Texture2D Gardient;
         public Rectangle FullScreenRectangle;
+        public Random Random;
+
+        public StorageDevice StorageDevice;
+        private IAsyncResult StorageDeviceResult;
+        public StorageContainer StorageContainer;
 
         public Globals()
         {
         }
 
+        public void OpenContainer()
+        {
+            StorageDeviceResult = StorageDevice.BeginOpenContainer("RPG_Game_XNA", null, null);
+            StorageDeviceResult.AsyncWaitHandle.WaitOne();
+            StorageContainer = StorageDevice.EndOpenContainer(StorageDeviceResult);
+            StorageDeviceResult.AsyncWaitHandle.Close();
+        }
+
+        public void CloseContainer()
+        {
+            StorageContainer.Dispose();
+        }
+
         public void Initialize(ContentManager Content, GraphicsDevice Graphics)
         {
+            StorageDeviceResult = StorageDevice.BeginShowSelector(PlayerIndex.One, null, null);
+            StorageDeviceResult.AsyncWaitHandle.WaitOne();
+            StorageDevice = StorageDevice.EndShowSelector(StorageDeviceResult);
+            StorageDeviceResult.AsyncWaitHandle.Close();
+            OpenContainer();
             this.Content = Content;
             this.Graphics = Graphics;
             this.SpriteBatch = new SpriteBatch(Graphics);
@@ -39,6 +63,7 @@ namespace RPG_Game_XNA
             ScreenWidthHalf = ScreenWidth / 2;
             FullScreenRectangle = new Rectangle(0, 0, (int)ScreenWidth, (int)ScreenHeight);
 
+            Random = new Random();
             PixelWhite = new Texture2D(Graphics, 1, 1);
             Color[] data = { Color.White };
             PixelWhite.SetData<Color>(data);

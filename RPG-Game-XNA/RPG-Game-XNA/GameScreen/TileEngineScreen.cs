@@ -20,7 +20,7 @@ namespace RPG_Game_XNA.GameScreen
             : base()
         {
             userMovement = Vector2.Zero;
-            TileEngine = new TileEngineHelper();
+            TileEngine = Session.currentSession.TileEngine;
             TileEngine.SetMap(Session.currentSession.Map, -1);
             PlayerDummy = Globals.Instance.Content.Load<Texture2D>("Player");
             random = new Random();
@@ -76,10 +76,8 @@ namespace RPG_Game_XNA.GameScreen
             if (TileEngine.PartyLeaderPosition.TilePosition != oldPartyLeaderTilePosition)
             {
                 int fight = random.Next(1000);
-                string[] test = { "FIGHT!" };
                 if(fight < TileEngine.Map.RandomFightPossibility)
-                    GameStateManager.Instance.AddScreen(new PopUpScreen(test), true, false);
-                //                Session.CheckForRandomCombat(Map.RandomCombat);
+                    GameStateManager.Instance.AddScreen(new CombatScreen(), true, false);
             }
 
             // adjust the map origin so that the party is at the center of the viewport

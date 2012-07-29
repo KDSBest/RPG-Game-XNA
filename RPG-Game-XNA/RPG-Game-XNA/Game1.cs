@@ -24,7 +24,7 @@ namespace RPG_Game_XNA
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
-
+            
             //Initialize screen size to an ideal resolution for the XBox 360
             this.graphics.PreferredBackBufferWidth = 1280;
             this.graphics.PreferredBackBufferHeight = 720;

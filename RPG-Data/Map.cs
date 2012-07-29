@@ -319,6 +319,8 @@ namespace RPGData
             }
         }
 
+        public List<EnemyGroup> Enemies = new List<EnemyGroup>();
+
         #region Content Type Reader
 
 
@@ -353,6 +355,7 @@ namespace RPGData
                 map.Portals.AddRange(input.ReadObject<List<Point>>());
                 map.Trigger.AddRange(input.ReadObject<List<Trigger>>());
                 map.RandomFightPossibility = input.ReadInt32();
+                map.Enemies.AddRange(input.ReadObject<List<EnemyGroup>>());
                 return map;
             }
         }

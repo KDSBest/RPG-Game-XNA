@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
+using RPG_Game_XNA.GameScreen;
 
 namespace RPG_Game_XNA.GameStateManagement
 {
@@ -88,6 +89,65 @@ namespace RPG_Game_XNA.GameStateManagement
         public void RemoveScreen(GameStateScreen gameScreen)
         {
             Screens.Remove(gameScreen);
+        }
+
+        public void BackToTileScreen()
+        {
+            bool FoundTileScreen = false;
+            List<GameStateScreen> ToDel = new List<GameStateScreen>();
+            for (int i = 0; i < Screens.Count; i++)
+            {
+                if (FoundTileScreen)
+                {
+                    ToDel.Add(Screens[i]);
+                }
+                else
+                {
+                    if (Screens[i] is TileEngineScreen)
+                    {
+                        FoundTileScreen = true;
+                    }
+                }
+            }
+            foreach (GameStateScreen sc in ToDel)
+                RemoveScreen(sc);
+            ToDel.Clear();
+        }
+
+        public void BackToCombatScreen()
+        {
+            bool FoundCombatScreen = false;
+            List<GameStateScreen> ToDel = new List<GameStateScreen>();
+            for (int i = 0; i < Screens.Count; i++)
+            {
+                if (FoundCombatScreen)
+                {
+                    ToDel.Add(Screens[i]);
+                }
+                else
+                {
+                    if (Screens[i] is CombatScreen)
+                    {
+                        FoundCombatScreen = true;
+                    }
+                }
+            }
+            foreach (GameStateScreen sc in ToDel)
+                RemoveScreen(sc);
+            ToDel.Clear();
+        }
+
+        public void GameOver()
+        {
+            List<GameStateScreen> ToDel = new List<GameStateScreen>();
+            for (int i = 1; i < Screens.Count; i++)
+            {
+                ToDel.Add(Screens[i]);
+            }
+            AddScreen(new GameOverScreen(), true, false);
+            foreach (GameStateScreen sc in ToDel)
+                RemoveScreen(sc);
+            ToDel.Clear();
         }
 
         #region Singleton pattern

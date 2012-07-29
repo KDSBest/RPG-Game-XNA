@@ -5,12 +5,13 @@ using System.Text;
 using RPGData;
 using RPG_Game_XNA.GameStateManagement;
 using RPG_Game_XNA.GameScreen;
+using RPG_Game_XNA.Combat;
 
 namespace RPG_Game_XNA.ScriptEngine
 {
     public class ScriptEngine
     {
-        private Dictionary<string, object> Context;
+        public Dictionary<string, object> Context;
 
         public object GetVar(string Name)
         {
@@ -30,6 +31,11 @@ namespace RPG_Game_XNA.ScriptEngine
         public ScriptEngine()
         {
             Context = new Dictionary<string, object>();
+        }
+
+        public void Reset()
+        {
+            Context.Clear();
         }
 
         public void Execute(ScriptEngineCommand command)
@@ -76,59 +82,53 @@ namespace RPG_Game_XNA.ScriptEngine
                         return;
                     }
                     break;
-                case "ChoosePartyMember":
-                    //Sets
-                    //ScriptEngine.ScriptEngine.Instance.SetVar("PartySelect", selected);
-                    GameStateManager.Instance.AddScreen(new PartySelectScreen(command.Body), true, false);
-                    break;
-                case "DamageSelected":
+                case "GiveMPSelected":
                     {
                         //Has ScriptEngine.ScriptEngine.Instance.SetVar("Consumeable", Item.Name);
                         Character cha = Session.currentSession.Party[(int)GetVar("PartySelect")];
-                        if (cha.HP > 0)
-                        {
-                            Session.currentSession.Inventory.RemoveItem(ItemPool.Instance.GetItem((string)GetVar("Consumable")), 1);
-                            cha.HP -= int.Parse(command.Parameter[0].Value);
-                            if (cha.HP < 0)
-                                cha.HP = 0;
-                        }
+                        cha.MP += int.Parse(command.Parameter[0].Value);
+                        if (cha.MP < cha.MaxMP)
+                            cha.MP = cha.MaxMP;
                     }
                     break;
-                case "HealSelected":
+                case "GiveHPSelected":
                     {
                         //Has ScriptEngine.ScriptEngine.Instance.SetVar("Consumeable", Item.Name);
                         Character cha = Session.currentSession.Party[(int)GetVar("PartySelect")];
-                        if (cha.HP < cha.MaxHP)
-                        {
-                            Session.currentSession.Inventory.RemoveItem(ItemPool.Instance.GetItem((string)GetVar("Consumable")), 1);
-                            cha.HP += int.Parse(command.Parameter[0].Value);
-                            if (cha.HP > cha.MaxHP)
-                                cha.HP = cha.MaxHP;
-                        }
-                    }
-                    break;
-                case "GiveExpSelected":
-                    {
-                        //Has ScriptEngine.ScriptEngine.Instance.SetVar("Consumeable", Item.Name);
-                        Character cha = Session.currentSession.Party[(int)GetVar("PartySelect")];
-                        if (cha.Level < Character.MaxLevel)
-                        {
-                            Session.currentSession.Inventory.RemoveItem(ItemPool.Instance.GetItem((string)GetVar("Consumable")), 1);
-                            cha.Experience += int.Parse(command.Parameter[0].Value);
-                        }
+                        cha.HP += int.Parse(command.Parameter[0].Value);
+                        if (cha.HP > cha.MaxHP)
+                            cha.HP = cha.MaxHP;
                     }
                     break;
                 case "IfBoolVar":
                     {
                         object var = (object)GetVar(command.Parameter[0].Value);
-                        if(var == null || !(bool) var)
+                        if(var == null || ((string) var) != "true")
                             ScriptEngine.Instance.Execute(command.Body2);
                         else
                             ScriptEngine.Instance.Execute(command.Body);
                     }
                     break;
                 case "SetVarBool":
-                    SetVar(command.Parameter[0].Value, command.Parameter[1].Value == "true");
+                    SetVar(command.Parameter[0].Value, command.Parameter[1].Value);
+                    break;
+                case "UseSkillOnRandom":
+                    {
+                        int MaxRandom = 0;
+                        foreach (Character c in Session.currentSession.Party)
+                            if (c.HP > 0)
+                                MaxRandom++;
+                        int Random = Globals.Instance.Random.Next(MaxRandom);
+                        int Choosen = 0;
+                        for (int i = 0; i <= Random; Choosen++)
+                        {
+                            if (Session.currentSession.Party[i].HP > 0)
+                                i++;
+                        }
+                        Character Attacker = (Character)GetVar("Attacker");
+                        Character Victim = Session.currentSession.Party[Random];
+                        CombatEngine.DoDamage(Attacker, Victim, command.Parameter[0].Value);
+                    }
                     break;
             }
         }

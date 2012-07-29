@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<XnaContent>
+  <Asset Type="RPGData.SkillPool">
+    <Pool>
+      <Item>
+        <Name>Attack</Name>
+        <ConsumeMP>0</ConsumeMP>
+        <Power>1</Power>
+        <AoE>false</AoE>
+        <DamageType>0</DamageType>
+        <CastOnTeam>false</CastOnTeam>
+      </Item>
+      <Item>
+        <Name>AoE Attack</Name>
+        <ConsumeMP>10</ConsumeMP>
+        <Power>0.8</Power>
+        <AoE>true</AoE>
+        <DamageType>0</DamageType>
+        <CastOnTeam>false</CastOnTeam>
+      </Item>
+      <Item>
+        <Name>Fire</Name>
+        <ConsumeMP>50</ConsumeMP>
+        <Power>1.2</Power>
+        <AoE>false</AoE>
+        <DamageType>1</DamageType>
+        <CastOnTeam>false</CastOnTeam>
+      </Item>
+      <Item>
+        <Name>Vita</Name>
+        <ConsumeMP>50</ConsumeMP>
+        <Power>2</Power>
+        <AoE>false</AoE>
+        <DamageType>2</DamageType>
+        <CastOnTeam>true</CastOnTeam>
+      </Item>
+    </Pool>
+  </Asset>
+</XnaContent>

@@ -28,13 +28,12 @@ namespace RPGContentPipeline
     /// This should be part of a Content Pipeline Extension Library project.
     
     [ContentTypeWriter]
-    public class ConsumableWriter : RolePlayingGameWriter<Consumable>
+    public class ItemDropWriter : RolePlayingGameWriter<ItemDrop>
     {
-        protected override void Write(ContentWriter output, Consumable value)
+        protected override void Write(ContentWriter output, ItemDrop value)
         {
-            output.Write(value.Name);
-            output.WriteObject<List<ScriptEngineCommand>>(value.Action);
-            output.WriteObject<List<string>>(value.UseableChecks);
+            output.Write(value.ItemName);
+            output.Write(value.Chance);
         }
     }
 }

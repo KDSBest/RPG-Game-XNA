@@ -49,6 +49,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ItemDropWriter.cs" />
+    <Compile Include="EnemyGroupEntryWriter.cs" />
+    <Compile Include="EnemyGroupWriter.cs" />
+    <Compile Include="SkillPoolWriter.cs" />
+    <Compile Include="SkillWriter.cs" />
     <Compile Include="CharacterDataWriter.cs" />
     <Compile Include="Items\ArmourWriter.cs" />
     <Compile Include="Items\ConsumableWriter.cs" />
