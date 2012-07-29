@@ -164,9 +164,9 @@
       <Name>RPGData</Name>
     </ProjectReference>
     <ProjectReference Include="..\RPG-Game-XNAContent\RPG-Game-XNAContent.contentproj">
+      <Project>{C6367B65-257C-44D3-93B6-973B30687172}</Project>
       <Name>RPG-Game-XNAContent %28Content%29</Name>
       <XnaReferenceType>Content</XnaReferenceType>
-      <Project>{C6367B65-257C-44D3-93B6-973B30687172}</Project>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

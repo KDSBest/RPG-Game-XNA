@@ -1,12 +1,4 @@
-Content\DefaultFont.xnb
-Content\ForestTiles.xnb
-Content\Player.xnb
-Content\DungeonTiles.xnb
 Content\Maps\StartLevel.xnb
-Content\ConsumablePool.xnb
-Content\ArmourPool.xnb
-Content\WeaponPool.xnb
-Content\Character\Natsu.xnb
-Content\SkillPool.xnb
-Content\Character\Wolf.xnb
-Content\Character\Magician.xnb
+Content\DungeonTiles.xnb
+Content\ForestTiles.xnb
+Content\DefaultFont.xnb

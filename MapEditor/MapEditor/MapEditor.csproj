@@ -129,14 +129,14 @@
     <Content Include="GameThumbnail.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\MapEditorContent\MapEditorContent.contentproj">
+      <Project>{ABFC1619-9A19-46AD-8EBE-20A4EBB0AE99}</Project>
+      <Name>MapEditorContent</Name>
+      <XnaReferenceType>Content</XnaReferenceType>
+    </ProjectReference>
     <ProjectReference Include="..\..\RPG-Data\RPGData.csproj">
       <Project>{BF1FD91B-AFD5-4A8B-8592-4BDB4DBBD53D}</Project>
       <Name>RPGData</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\RPG-Game-XNA\RPG-Game-XNAContent\RPG-Game-XNAContent.contentproj">
-      <Project>{C6367B65-257C-44D3-93B6-973B30687172}</Project>
-      <Name>RPG-Game-XNAContent %28Content%29</Name>
-      <XnaReferenceType>Content</XnaReferenceType>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
