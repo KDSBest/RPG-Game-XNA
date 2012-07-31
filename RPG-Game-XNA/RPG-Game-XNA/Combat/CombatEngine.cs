@@ -53,21 +53,27 @@ namespace RPG_Game_XNA.Combat
                 {
                     // 0 Physical
                     case 0:
-                        BaseDamage = Attacker.Attack - Victim.Defense;
+                        BaseDamage = Attacker.Attack;
+                        BaseDamage += ((float)(BaseDamage + Attacker.Level) / 32.0f) * ((float)(BaseDamage * Attacker.Level) / 32.0f);
+                        BaseDamage -= Victim.Defense;
                         Power = Skill.Power;
                         if (BaseDamage <= 0)
                             BaseDamage = 1;
                         break;
                     // 1 Magical
                     case 1:
-                        BaseDamage = Attacker.Magic - Victim.MagicDefense;
+                        BaseDamage = Attacker.Magic;
+                        BaseDamage += ((float)(BaseDamage + Attacker.Level) / 32.0f) * ((float)(BaseDamage * Attacker.Level) / 32.0f);
+                        BaseDamage -= Victim.MagicDefense;
                         Power = Skill.Power;
                         if (BaseDamage <= 0)
                             BaseDamage = 1;
                         break;
                     // 2 Heal
                     case 2:
-                        BaseDamage = -Attacker.Magic;
+                        BaseDamage = Attacker.Magic;
+                        BaseDamage += ((float)(BaseDamage + Attacker.Level) / 32.0f) * ((float)(BaseDamage * Attacker.Level) / 32.0f);
+                        BaseDamage *= -1;
                         Power = Skill.Power;
                         break;
                 }

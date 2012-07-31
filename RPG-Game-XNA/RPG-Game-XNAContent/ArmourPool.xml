@@ -7,6 +7,11 @@
         <Defense>2</Defense>
         <MagicDefense>1</MagicDefense>
       </Item>
+      <Item>
+        <Name>Shirt</Name>
+        <Defense>3000</Defense>
+        <MagicDefense>2000</MagicDefense>
+      </Item>
     </Pool>
   </Asset>
 </XnaContent>

@@ -18,6 +18,7 @@ namespace RPG_Game_XNA.Menu.Items
 
         public override void Select()
         {
+            GameStateManager.Instance.AddScreen(new WeaponPartySelectScreen(((Weapon)Item)), true, false);
         }
     }
 }

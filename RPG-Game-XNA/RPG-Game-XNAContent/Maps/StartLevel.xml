@@ -99,7 +99,7 @@
       1   1   1   1   1   1   0   0   0   0   0   0   0   0   1   1   1   1   1   1
       1   1   1   1   1   1   1   1   0   0   0   0   1   1   1   1   1   1   1   1
       1   1   1   1   1   1   1   1   0   0   0   0   1   1   1   1   1   1   1   1
-      1   1   1   1   1   1   1   1   0   0   0   0   1   1   1   1   1   1   1   1
+      1   1   1   1   1   1   1   1   0   1   0   0   1   1   1   1   1   1   1   1
     </CollisionLayer>
     <Portals>
       8 20 9 20
@@ -168,6 +168,36 @@
                 <Parameter>
                   <Item>
                     <Type>String</Type>
+                    <Value>Shirt</Value>
+                  </Item>
+                  <Item>
+                    <Type>Integer</Type>
+                    <Value>1</Value>
+                  </Item>
+                </Parameter>
+                <Body/>
+                <Body2/>
+                <Type>GiveItem</Type>
+              </Item>
+              <Item>
+                <Parameter>
+                  <Item>
+                    <Type>String</Type>
+                    <Value>Wooden Sword</Value>
+                  </Item>
+                  <Item>
+                    <Type>Integer</Type>
+                    <Value>1</Value>
+                  </Item>
+                </Parameter>
+                <Body/>
+                <Body2/>
+                <Type>GiveItem</Type>
+              </Item>
+              <Item>
+                <Parameter>
+                  <Item>
+                    <Type>String</Type>
                     <Value>Small Refresher</Value>
                   </Item>
                   <Item>
@@ -187,7 +217,7 @@
                   </Item>
                   <Item>
                     <Type>String</Type>
-                    <Value>I found 5 Small Refresher.</Value>
+                    <Value>I found 5 Small Refresher.\nOkay I stole it from that dumb NPC.</Value>
                   </Item>
                 </Parameter>
                 <Type>ShowText</Type>
@@ -330,11 +360,30 @@
                 <Type>UseSkillOnRandom</Type>
               </Item>
             </AI>
-            <Experience>10</Experience>
+            <Experience>20</Experience>
             <Items/>
           </Item>
         </Group>
       </Item>
     </Enemies>
+    <Objects>
+      <Item>
+        <Sprite>
+          <TextureName>AnimatedSprites\WalkTest</TextureName>
+          <FrameDimensions>138 192</FrameDimensions>
+          <FramesPerRow>6</FramesPerRow>
+          <SourceOffset>69 125</SourceOffset>
+          <Animations />
+        </Sprite>
+        <Animation>
+          <Name>Object</Name>
+          <StartingFrame>1</StartingFrame>
+          <EndingFrame>6</EndingFrame>
+          <Interval>80</Interval>
+          <IsLoop>true</IsLoop>
+        </Animation>
+        <MapPosition>9 22</MapPosition>
+      </Item>
+    </Objects>
   </Asset>
 </XnaContent>

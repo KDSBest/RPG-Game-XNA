@@ -20,22 +20,6 @@ namespace RPGData
         [ContentSerializerIgnore]
         public Texture2D Texture;
 
-/*        public Map(string Name, Point MapDimensions, Point TileSize, Point SpawnMapPosition, Texture2D Texture, int[] BaseLayer, int[] FringeLayer, int[] CollisionLayer, List<Portal> Portals)
-        {
-                this.Name = Name;
-                this.MapDimensions = MapDimensions;
-                this.TileSize = TileSize;
-                this.SpawnMapPosition = SpawnMapPosition;
-
-                this.Texture = Texture;
-                this.TilesPerRow = this.Texture.Width / this.TileSize.X;
-
-                this.BaseLayer = BaseLayer;
-                this.FringeLayer = FringeLayer;
-                this.CollisionLayer = CollisionLayer;
-                this.Portals = Portals;
-        }*/
-
         #region Map Layers
 
 
@@ -321,12 +305,10 @@ namespace RPGData
 
         public List<EnemyGroup> Enemies = new List<EnemyGroup>();
 
+        public List<MapObject> Objects = new List<MapObject>();
+
         #region Content Type Reader
 
-
-
-        /// Read a Map object from the content pipeline.
-        
         public class MapReader : ContentTypeReader<Map>
         {
             protected override Map Read(ContentReader input, Map existingInstance)
@@ -356,6 +338,7 @@ namespace RPGData
                 map.Trigger.AddRange(input.ReadObject<List<Trigger>>());
                 map.RandomFightPossibility = input.ReadInt32();
                 map.Enemies.AddRange(input.ReadObject<List<EnemyGroup>>());
+                map.Objects.AddRange(input.ReadObject<List<MapObject>>());
                 return map;
             }
         }

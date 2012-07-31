@@ -10,16 +10,16 @@ using RPGData;
 
 namespace RPG_Game_XNA.GameScreen
 {
-    public class ConsumablePartySelectScreen : GameStateScreen
+    public class WeaponPartySelectScreen : GameStateScreen
     {
         protected List<Character> Entries;
         protected Texture2D Background;
         private int selected;
-        private Consumable Consumable;
+        private Weapon Weapon;
 
-        public ConsumablePartySelectScreen(Consumable Consumable)
+        public WeaponPartySelectScreen(Weapon Weapon)
         {
-            this.Consumable = Consumable;
+            this.Weapon = Weapon;
             selected = 0;
             Entries = Session.currentSession.Party;
         }
@@ -32,16 +32,16 @@ namespace RPG_Game_XNA.GameScreen
         public override void Draw(GameTime time)
         {
             base.Draw(time);
-            Point Size = new Point(500, 175);
+            Point Size = new Point(630, 175);
             int StartPosY = (int)(Globals.Instance.ScreenHeightHalf - ((float)Entries.Count / 2.0f) * Size.Y);
             Point Position = new Point((int)Globals.Instance.ScreenWidthHalf - (Size.X / 2), StartPosY);
             Globals.Instance.SpriteBatch.Begin();
             for (int i = 0; i < Entries.Count; i++)
             {
                 if (i == selected)
-                    DrawHelper.Instance.DrawSelectCharacterInfo(Position, Size, Color.Wheat, Entries[i]);
+                    DrawHelper.Instance.DrawSelectWeaponCharacterInfo(Position, Size, Color.Wheat, Entries[i], Weapon);
                 else
-                    DrawHelper.Instance.DrawSelectCharacterInfo(Position, Size, Color.Gray, Entries[i]);
+                    DrawHelper.Instance.DrawSelectWeaponCharacterInfo(Position, Size, Color.Gray, Entries[i], Weapon);
 
                 Position.Y += Size.Y;
             }
@@ -65,13 +65,10 @@ namespace RPG_Game_XNA.GameScreen
 
             if (input.IsMenuSelect())
             {
-                if (Session.currentSession.Inventory.IsUseable(Consumable, Entries[selected]))
-                {
-                    ScriptEngine.ScriptEngine.Instance.SetVar("PartySelect", selected);
-                    ScriptEngine.ScriptEngine.Instance.Execute(Consumable.Action);
-                    Session.currentSession.Inventory.RemoveItem(Consumable, 1);
-                    GameStateManager.Instance.RemoveScreen(this);
-                }
+                Session.currentSession.Inventory.AddItem(Entries[selected].Weapon, 1);
+                Session.currentSession.Inventory.RemoveItem(Weapon, 1);
+                Entries[selected].Weapon = Weapon;
+                GameStateManager.Instance.RemoveScreen(this);
             }
             if (input.IsBack())
             {

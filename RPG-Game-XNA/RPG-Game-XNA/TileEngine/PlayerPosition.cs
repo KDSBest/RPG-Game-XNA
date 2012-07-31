@@ -1,21 +1,9 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
+using RPGData;
 
 namespace RPG_Game_XNA.TileEngine
 {
-
-    public enum Direction
-    {
-        North,
-        NorthEast,
-        East,
-        SouthEast,
-        South,
-        SouthWest,
-        West,
-        NorthWest,
-    }
-    
     /// <summary>
     /// The position of a player in the tile engine.
     

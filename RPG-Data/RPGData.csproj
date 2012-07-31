@@ -92,9 +92,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Animation\AnimatingSprite.cs" />
+    <Compile Include="Animation\Animation.cs" />
+    <Compile Include="Direction.cs" />
     <Compile Include="ItemDrop.cs" />
     <Compile Include="EnemyGroup.cs" />
     <Compile Include="EnemyGroupEntry.cs" />
+    <Compile Include="MapObject.cs" />
     <Compile Include="SkillPool.cs" />
     <Compile Include="Items\Armour.cs" />
     <Compile Include="CharakterData.cs" />

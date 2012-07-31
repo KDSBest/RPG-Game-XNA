@@ -110,6 +110,7 @@
     <Compile Include="AbstractGameScreen\MenuCategoryScreen.cs" />
     <Compile Include="AbstractGameScreen\MenuScreen.cs" />
     <Compile Include="Combat\CombatEngine.cs" />
+    <Compile Include="DrawHelper.cs" />
     <Compile Include="GameScreen\CombatScreen.cs" />
     <Compile Include="GameScreen\CombatMenuScreen.cs" />
     <Compile Include="GameScreen\CombatSkillSelectScreen.cs" />
@@ -117,6 +118,8 @@
     <Compile Include="GameScreen\CombatRewardScreen.cs" />
     <Compile Include="GameScreen\CombatConsumableSelectScreen.cs" />
     <Compile Include="GameScreen\CombatConsumablePartySelectScreen.cs" />
+    <Compile Include="GameScreen\ArmourPartySelectScreen.cs" />
+    <Compile Include="GameScreen\WeaponPartySelectScreen.cs" />
     <Compile Include="GameScreen\SaveGameScreen.cs" />
     <Compile Include="GameScreen\LoadGameScreen.cs" />
     <Compile Include="GameScreen\GameOverScreen.cs" />

@@ -1,6 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <XnaContent>
   <Asset Type="RPGData.CharacterData">
+    <IdleSprite>
+      <TextureName>AnimatedSprites\IdleTest</TextureName>
+      <FrameDimensions>138 192</FrameDimensions>
+      <FramesPerRow>6</FramesPerRow>
+      <SourceOffset>69 125</SourceOffset>
+      <Animations />
+    </IdleSprite>
+    <WalkingSprite>
+      <TextureName>AnimatedSprites\WalkTest</TextureName>
+      <FrameDimensions>138 192</FrameDimensions>
+      <FramesPerRow>6</FramesPerRow>
+      <SourceOffset>69 125</SourceOffset>
+      <Animations />
+    </WalkingSprite>
+    <MapWalkingAnimationInterval>80</MapWalkingAnimationInterval>
+    <MapIdleAnimationInterval>180</MapIdleAnimationInterval>
     <VitalityBase>10</VitalityBase>
     <StrengthBase>10</StrengthBase>
     <MagicBase>5</MagicBase>
@@ -17,5 +33,6 @@
     <HPMax>9999</HPMax>
     <MPMax>9999</MPMax>
     <DexterityMax>100</DexterityMax>
+    <CharacterImage>CharacterImages\Blob</CharacterImage>
   </Asset>
 </XnaContent>

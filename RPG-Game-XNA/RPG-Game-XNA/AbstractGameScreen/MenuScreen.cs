@@ -13,7 +13,7 @@ namespace RPG_Game_XNA.AbstractGameScreen
     {
         protected List<IMenuEntry> Entries;
         protected Texture2D Background;
-        private int selected;
+        protected int selected;
         public float Space;
         private float Pulsate;
         private Vector2 ScalePulsate;

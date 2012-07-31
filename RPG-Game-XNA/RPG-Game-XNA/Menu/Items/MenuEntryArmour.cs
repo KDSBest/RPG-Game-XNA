@@ -18,6 +18,7 @@ namespace RPG_Game_XNA.Menu.Items
 
         public override void Select()
         {
+            GameStateManager.Instance.AddScreen(new ArmourPartySelectScreen(((Armour)Item)), true, false);
         }
     }
 }

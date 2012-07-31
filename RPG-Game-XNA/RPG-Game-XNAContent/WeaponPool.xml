@@ -7,6 +7,16 @@
         <Damage>10</Damage>
         <MagicDamage>5</MagicDamage>
       </Item>
+      <Item>
+        <Name>Wooden Sword</Name>
+        <Damage>2000</Damage>
+        <MagicDamage>1005</MagicDamage>
+      </Item>
+      <Item>
+        <Name>Imba</Name>
+        <Damage>1000</Damage>
+        <MagicDamage>1000</MagicDamage>
+      </Item>
     </Pool>
   </Asset>
 </XnaContent>

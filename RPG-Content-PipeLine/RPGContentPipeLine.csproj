@@ -49,6 +49,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Animation\AnimatingSpriteWriter.cs" />
+    <Compile Include="Animation\AnimationWriter.cs" />
+    <Compile Include="MapObjectWriter.cs" />
     <Compile Include="ItemDropWriter.cs" />
     <Compile Include="EnemyGroupEntryWriter.cs" />
     <Compile Include="EnemyGroupWriter.cs" />

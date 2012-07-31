@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using RPGData;
+using RPGData.Animation;
 
 namespace RPG_Game_XNA
 {
@@ -24,7 +25,7 @@ namespace RPG_Game_XNA
             set
             {
                 _Experience = value;
-                while (ExperienceForNextLevel() < _Experience && Level < MaxLevel)
+                while (ExperienceForNextLevel() <= _Experience && Level < MaxLevel)
                     Level++;
             }
         }
@@ -33,6 +34,8 @@ namespace RPG_Game_XNA
 
         public List<ScriptEngineCommand> AI;
         public const int MaxLevel = 99;
+        public int AnimationState;
+        public Direction Direction;
 
         public Character(string Name, Weapon Weapon, Armour Armour)
             : this(Name, 0, Weapon, Armour)
@@ -45,6 +48,11 @@ namespace RPG_Game_XNA
             this.Name = Name;
             this.DisplayName = Name;
             CharInfo = Globals.Instance.Content.Load<CharacterData>("Character\\" + Name);
+            Direction = Direction.South;
+            AnimationState = 0;
+            AddStandardCharacterIdleAnimations();
+            AddStandardCharacterWalkingAnimations();
+            ResetAnimation(false);
 
             Level = 1;
             this.Experience = Experience;
@@ -186,6 +194,25 @@ namespace RPG_Game_XNA
                 Exp += (int) (K * a * a);
             return Exp;
         }
+        public int ExperienceForCurrentLevel()
+        {
+            int L = Level;
+            int Exp = 0;
+            float K;
+            if (Level <= 10)
+                K = 7;
+            else if (Level <= 20)
+                K = 7.3f;
+            else if (Level <= 30)
+                K = 7.5f;
+            else if (Level <= 40)
+                K = 7.6f;
+            else
+                K = 7.7f;
+            for (int a = 1; a < L; a++)
+                Exp += (int)(K * a * a);
+            return Exp;
+        }
 
         public void Damage(int Damage)
         {
@@ -202,6 +229,90 @@ namespace RPG_Game_XNA
             get
             {
                 return HP > 0;
+            }
+        }
+
+        /// <summary>
+        /// Reset the animations for this character.
+        /// </summary>
+        public virtual void ResetAnimation(bool isWalking)
+        {
+
+            AnimationState = isWalking ? 1 : 0;
+            if (this.CharInfo.IdleSprite != null)
+            {
+                if (isWalking && this.CharInfo.IdleSprite["Walk" + Direction.ToString()] != null)
+                {
+                    this.CharInfo.IdleSprite.PlayAnimation("Walk", Direction);
+                }
+                else
+                {
+                    this.CharInfo.IdleSprite.PlayAnimation("Idle", Direction);
+                }
+            }
+            if (this.CharInfo.WalkingSprite != null)
+            {
+                if (isWalking && this.CharInfo.WalkingSprite["Walk" + Direction.ToString()] != null)
+                {
+                    this.CharInfo.WalkingSprite.PlayAnimation("Walk", Direction);
+                }
+                else
+                {
+                    this.CharInfo.WalkingSprite.PlayAnimation("Idle", Direction);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Add the standard character idle animations to this character.
+        /// </summary>
+        private void AddStandardCharacterIdleAnimations()
+        {
+            if (this.CharInfo.IdleSprite != null)
+            {
+                this.CharInfo.IdleSprite.AddAnimation(new Animation("IdleSouth", 1, 6,
+                    this.CharInfo.MapIdleAnimationInterval, true));
+                this.CharInfo.IdleSprite.AddAnimation(new Animation("IdleSouthwest", 7, 12,
+                    this.CharInfo.MapIdleAnimationInterval, true));
+                this.CharInfo.IdleSprite.AddAnimation(new Animation("IdleWest", 13, 18,
+                    this.CharInfo.MapIdleAnimationInterval, true));
+                this.CharInfo.IdleSprite.AddAnimation(new Animation("IdleNorthwest", 19, 24,
+                    this.CharInfo.MapIdleAnimationInterval, true));
+                this.CharInfo.IdleSprite.AddAnimation(new Animation("IdleNorth", 25, 30,
+                    this.CharInfo.MapIdleAnimationInterval, true));
+                this.CharInfo.IdleSprite.AddAnimation(new Animation("IdleNortheast", 31, 36,
+                    this.CharInfo.MapIdleAnimationInterval, true));
+                this.CharInfo.IdleSprite.AddAnimation(new Animation("IdleEast", 37, 42,
+                    this.CharInfo.MapIdleAnimationInterval, true));
+                this.CharInfo.IdleSprite.AddAnimation(new Animation("IdleSoutheast", 43, 48,
+                    this.CharInfo.MapIdleAnimationInterval, true));
+            }
+        }
+
+        /// <summary>
+        /// Add the standard character walk animations to this character.
+        /// </summary>
+        private void AddStandardCharacterWalkingAnimations()
+        {
+            AnimatingSprite sprite = (this.CharInfo.WalkingSprite == null ? this.CharInfo.IdleSprite : this.CharInfo.WalkingSprite);
+            if (sprite != null)
+            {
+                sprite.AddAnimation(new Animation("WalkSouth", 1, 6,
+                    this.CharInfo.MapWalkingAnimationInterval, true));
+                sprite.AddAnimation(new Animation("WalkSouthwest", 7, 12,
+                    this.CharInfo.MapWalkingAnimationInterval, true));
+                sprite.AddAnimation(new Animation("WalkWest", 13, 18,
+                    this.CharInfo.MapWalkingAnimationInterval, true));
+                sprite.AddAnimation(new Animation("WalkNorthwest", 19, 24,
+                    this.CharInfo.MapWalkingAnimationInterval, true));
+                sprite.AddAnimation(new Animation("WalkNorth", 25, 30,
+                    this.CharInfo.MapWalkingAnimationInterval, true));
+                sprite.AddAnimation(new Animation("WalkNortheast", 31, 36,
+                    this.CharInfo.MapWalkingAnimationInterval, true));
+                sprite.AddAnimation(new Animation("WalkEast", 37, 42,
+                    this.CharInfo.MapWalkingAnimationInterval, true));
+                sprite.AddAnimation(new Animation("WalkSoutheast", 43, 48,
+                    this.CharInfo.MapWalkingAnimationInterval, true));
             }
         }
     }

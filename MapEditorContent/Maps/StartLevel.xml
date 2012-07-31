@@ -336,5 +336,6 @@
         </Group>
       </Item>
     </Enemies>
+    <Objects/>
   </Asset>
 </XnaContent>

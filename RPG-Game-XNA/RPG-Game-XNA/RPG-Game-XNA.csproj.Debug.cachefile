@@ -1,6 +1,23 @@
 Content\ForestTiles.xnb
 Content\Player.xnb
 Content\DungeonTiles.xnb
+Content\Background.xnb
+Content\Main Menu.xnb
+Content\Load.xnb
+Content\NewGame.xnb
+Content\Quit.xnb
+Content\Window\B.xnb
+Content\Window\BG.xnb
+Content\Window\BL.xnb
+Content\Window\BR.xnb
+Content\Window\L.xnb
+Content\Window\R.xnb
+Content\Window\U.xnb
+Content\Window\UL.xnb
+Content\Window\UR.xnb
+Content\AnimatedSprites\IdleTest.xnb
+Content\AnimatedSprites\WalkTest.xnb
+Content\CharacterImages\Blob.xnb
 Content\Maps\StartLevel.xnb
 Content\ConsumablePool.xnb
 Content\ArmourPool.xnb

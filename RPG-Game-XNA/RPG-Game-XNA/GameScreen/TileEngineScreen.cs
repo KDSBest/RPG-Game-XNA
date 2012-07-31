@@ -29,13 +29,54 @@ namespace RPG_Game_XNA.GameScreen
         public override void Draw(GameTime time)
         {
             TileEngine.DrawLayers(true, true, false);
-            Vector2 position = TileEngine.PartyLeaderPosition.GetScreenPosition(TileEngine);
+
+            float elapsedSeconds = (float)time.ElapsedGameTime.TotalSeconds;
+
             Globals.Instance.SpriteBatch.Begin();
-            if (PlayerDummy != null)
             {
-                Globals.Instance.SpriteBatch.Draw(PlayerDummy, position, null, Color.White, 0f, new Vector2(0, 64), 1f, SpriteEffects.None, MathHelper.Clamp(1f - position.Y / (float)TileEngine.Viewport.Height, 0f, 1f));
+
+                Character player = Session.currentSession.Party[0];
+                Vector2 position = TileEngine.PartyLeaderPosition.GetScreenPosition(TileEngine);
+                player.Direction = TileEngine.PartyLeaderPosition.Direction;
+                player.ResetAnimation(TileEngine.PartyLeaderPosition.IsMoving);
+                switch (player.AnimationState)
+                {
+                    case 0:
+                        if (player.CharInfo.IdleSprite != null)
+                        {
+                            player.CharInfo.IdleSprite.UpdateAnimation(elapsedSeconds);
+                            player.CharInfo.IdleSprite.Draw(Globals.Instance.SpriteBatch, position,
+                                1f - position.Y / (float)TileEngine.Viewport.Height);
+                        }
+                        break;
+
+                    case 1:
+                        if (player.CharInfo.WalkingSprite != null)
+                        {
+                            player.CharInfo.WalkingSprite.UpdateAnimation(elapsedSeconds);
+                            player.CharInfo.WalkingSprite.Draw(Globals.Instance.SpriteBatch, position,
+                                1f - position.Y / (float)TileEngine.Viewport.Height);
+                        }
+                        else if (player.CharInfo.IdleSprite != null)
+                        {
+                            player.CharInfo.IdleSprite.UpdateAnimation(elapsedSeconds);
+                            player.CharInfo.IdleSprite.Draw(Globals.Instance.SpriteBatch, position,
+                                1f - position.Y / (float)TileEngine.Viewport.Height);
+                        }
+                        break;
+                }
+            }
+
+            foreach (MapObject mapObj in TileEngine.Map.Objects)
+            {
+                Vector2 position = TileEngine.GetScreenPosition(mapObj.MapPosition);
+                mapObj.Sprite.PlayAnimation(0);
+                mapObj.Sprite.UpdateAnimation(elapsedSeconds);
+                mapObj.Sprite.Draw(Globals.Instance.SpriteBatch, position,
+                    1f - position.Y / (float)TileEngine.Viewport.Height);
             }
             Globals.Instance.SpriteBatch.End();
+
             TileEngine.DrawLayers(false, false, true);
         }
 

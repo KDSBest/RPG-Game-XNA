@@ -47,7 +47,12 @@ namespace RPGContentPipeline
             output.Write(value.LuckMax);
             output.Write(value.HPMax);
             output.Write(value.MPMax);
-            output.Write(value.DexterityMax); 
+            output.Write(value.DexterityMax);
+            output.Write(value.MapIdleAnimationInterval);
+            output.WriteObject(value.IdleSprite);
+            output.Write(value.MapWalkingAnimationInterval);
+            output.WriteObject(value.WalkingSprite);
+            output.Write(String.IsNullOrEmpty(value.CharacterImage) ? String.Empty : value.CharacterImage);
         }
     }
 }
