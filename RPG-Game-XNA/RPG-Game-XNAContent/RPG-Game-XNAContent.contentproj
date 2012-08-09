@@ -218,20 +218,22 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AnimatedSprites\IdleTest.png">
-      <Name>IdleTest</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="AnimatedSprites\WalkTest.png">
-      <Name>WalkTest</Name>
+    <Compile Include="CharacterImages\Blob.png">
+      <Name>Blob</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CharacterImages\Blob.png">
-      <Name>Blob</Name>
+    <Compile Include="AnimatedSprites\Figure1IdleSheet.png">
+      <Name>Figure1IdleSheet</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AnimatedSprites\Figure1Sheet.png">
+      <Name>Figure1Sheet</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

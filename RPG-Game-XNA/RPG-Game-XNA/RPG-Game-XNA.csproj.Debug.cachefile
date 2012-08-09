@@ -15,8 +15,6 @@ Content\Window\R.xnb
 Content\Window\U.xnb
 Content\Window\UL.xnb
 Content\Window\UR.xnb
-Content\AnimatedSprites\IdleTest.xnb
-Content\AnimatedSprites\WalkTest.xnb
 Content\CharacterImages\Blob.xnb
 Content\Maps\StartLevel.xnb
 Content\ConsumablePool.xnb
@@ -27,3 +25,5 @@ Content\SkillPool.xnb
 Content\Character\Wolf.xnb
 Content\Character\Magician.xnb
 Content\DefaultFont.xnb
+Content\AnimatedSprites\Figure1Sheet.xnb
+Content\AnimatedSprites\Figure1IdleSheet.xnb

@@ -2,20 +2,20 @@
 <XnaContent>
   <Asset Type="RPGData.CharacterData">
     <IdleSprite>
-      <TextureName>AnimatedSprites\IdleTest</TextureName>
+      <TextureName>AnimatedSprites\Figure1IdleSheet</TextureName>
       <FrameDimensions>138 192</FrameDimensions>
       <FramesPerRow>6</FramesPerRow>
       <SourceOffset>69 125</SourceOffset>
       <Animations />
     </IdleSprite>
     <WalkingSprite>
-      <TextureName>AnimatedSprites\WalkTest</TextureName>
+      <TextureName>AnimatedSprites\Figure1Sheet</TextureName>
       <FrameDimensions>138 192</FrameDimensions>
       <FramesPerRow>6</FramesPerRow>
       <SourceOffset>69 125</SourceOffset>
       <Animations />
     </WalkingSprite>
-    <MapWalkingAnimationInterval>80</MapWalkingAnimationInterval>
+    <MapWalkingAnimationInterval>100</MapWalkingAnimationInterval>
     <MapIdleAnimationInterval>180</MapIdleAnimationInterval>
     <VitalityBase>10</VitalityBase>
     <StrengthBase>10</StrengthBase>

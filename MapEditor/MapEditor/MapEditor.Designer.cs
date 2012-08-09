@@ -40,18 +40,18 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.NewMap = new System.Windows.Forms.Button();
-            this.TileSet = new System.Windows.Forms.ComboBox();
-            this.SizeX = new System.Windows.Forms.NumericUpDown();
             this.SizeY = new System.Windows.Forms.NumericUpDown();
+            this.SizeX = new System.Windows.Forms.NumericUpDown();
+            this.TileSet = new System.Windows.Forms.ComboBox();
+            this.NewMap = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.SizeX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SizeY)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SizeX)).BeginInit();
             this.SuspendLayout();
             // 
             // DrawLayer1
@@ -189,27 +189,22 @@
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // NewMap
+            // SizeY
             // 
-            this.NewMap.Location = new System.Drawing.Point(3, 59);
-            this.NewMap.Name = "NewMap";
-            this.NewMap.Size = new System.Drawing.Size(686, 23);
-            this.NewMap.TabIndex = 0;
-            this.NewMap.Text = "NewMap";
-            this.NewMap.UseVisualStyleBackColor = true;
-            this.NewMap.Click += new System.EventHandler(this.NewMap_Click);
-            // 
-            // TileSet
-            // 
-            this.TileSet.FormattingEnabled = true;
-            this.TileSet.Items.AddRange(new object[] {
-            "ForestTiles",
-            "DungeonTiles"});
-            this.TileSet.Location = new System.Drawing.Point(6, 6);
-            this.TileSet.Name = "TileSet";
-            this.TileSet.Size = new System.Drawing.Size(686, 21);
-            this.TileSet.TabIndex = 1;
-            this.TileSet.Text = "ForestTiles";
+            this.SizeY.Location = new System.Drawing.Point(132, 33);
+            this.SizeY.Minimum = new decimal(new int[] {
+            12,
+            0,
+            0,
+            0});
+            this.SizeY.Name = "SizeY";
+            this.SizeY.Size = new System.Drawing.Size(120, 20);
+            this.SizeY.TabIndex = 3;
+            this.SizeY.Value = new decimal(new int[] {
+            12,
+            0,
+            0,
+            0});
             // 
             // SizeX
             // 
@@ -228,22 +223,28 @@
             0,
             0});
             // 
-            // SizeY
+            // TileSet
             // 
-            this.SizeY.Location = new System.Drawing.Point(132, 33);
-            this.SizeY.Minimum = new decimal(new int[] {
-            12,
-            0,
-            0,
-            0});
-            this.SizeY.Name = "SizeY";
-            this.SizeY.Size = new System.Drawing.Size(120, 20);
-            this.SizeY.TabIndex = 3;
-            this.SizeY.Value = new decimal(new int[] {
-            12,
-            0,
-            0,
-            0});
+            this.TileSet.FormattingEnabled = true;
+            this.TileSet.Items.AddRange(new object[] {
+            "ForestTiles",
+            "DungeonTiles",
+            "testTileSet"});
+            this.TileSet.Location = new System.Drawing.Point(6, 6);
+            this.TileSet.Name = "TileSet";
+            this.TileSet.Size = new System.Drawing.Size(686, 21);
+            this.TileSet.TabIndex = 1;
+            this.TileSet.Text = "ForestTiles";
+            // 
+            // NewMap
+            // 
+            this.NewMap.Location = new System.Drawing.Point(3, 59);
+            this.NewMap.Name = "NewMap";
+            this.NewMap.Size = new System.Drawing.Size(686, 23);
+            this.NewMap.TabIndex = 0;
+            this.NewMap.Text = "NewMap";
+            this.NewMap.UseVisualStyleBackColor = true;
+            this.NewMap.Click += new System.EventHandler(this.NewMap_Click);
             // 
             // MapEditor
             // 
@@ -263,8 +264,8 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.SizeX)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SizeY)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SizeX)).EndInit();
             this.ResumeLayout(false);
 
         }
